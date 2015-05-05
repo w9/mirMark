@@ -1,0 +1,23 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+    <g:ScrollPanel>
+        <g:HTMLPanel>
+            <g:Label ui:field="appTitle" addStyleNames="Highlighted">MirMark</g:Label>
+            <g:VerticalPanel>
+                <g:TextArea ui:field="arrayResults"/>
+                <g:HorizontalPanel>
+                    <g:InlineLabel text="Query:"/>
+                    <g:TextBox ui:field="utrSelect"/>
+                    <g:Button ui:field="selectButton" text="Select UTR"/>
+                </g:HorizontalPanel>
+                <g:HorizontalPanel>
+                    <g:InlineLabel text="Query:"/>
+                    <g:TextBox ui:field="mirSelect"/>
+                    <g:Button ui:field="selectMirButton" text="Select MIR"/>
+                </g:HorizontalPanel>
+            </g:VerticalPanel>
+        </g:HTMLPanel>
+    </g:ScrollPanel>
+</ui:UiBinder>
