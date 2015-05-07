@@ -34,7 +34,7 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/webui/target/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/webui/target/webui-1.0.0-SNAPSHOT/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="webui/web/Web" />
       <element id="gwt-compiler-output" facet="webui/gwt/GWT" />
