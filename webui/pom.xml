@@ -36,6 +36,7 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-script-beanshell</artifactId>
@@ -45,10 +46,6 @@
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-user</artifactId>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>commons-fileupload</groupId>
-            <artifactId>commons-fileupload</artifactId>
         </dependency>
         <dependency>
             <groupId>com.google.gwt</groupId>
@@ -64,6 +61,7 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava-gwt</artifactId>
         </dependency>
+
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
@@ -72,7 +70,22 @@
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
         </dependency>
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+        </dependency>
 
+        <dependency>
+            <groupId>org.gwtbootstrap3</groupId>
+            <artifactId>gwtbootstrap3</artifactId>
+            <version>0.9.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.gwtplatform</groupId>
+            <artifactId>gwtp-mvp-client</artifactId>
+            <version>1.4</version>
+        </dependency>
     </dependencies>
 
     <build>

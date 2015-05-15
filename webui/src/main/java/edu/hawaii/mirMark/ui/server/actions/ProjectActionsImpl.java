@@ -28,6 +28,7 @@ public class ProjectActionsImpl extends RemoteServiceServlet implements ProjectA
     private int numUtrs = 0;
 
     public ProjectActionsImpl() {
+        System.out.println(System.getProperty("user.dir"));
         try {
             Files.readAllLines(Paths.get(matrixUtrsFile), StandardCharsets.UTF_8)
                     .stream().map(st -> st.split("\\s+"))

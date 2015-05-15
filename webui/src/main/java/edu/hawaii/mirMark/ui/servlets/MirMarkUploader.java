@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 
 public class MirMarkUploader extends HttpServlet {
-    public static final String BASE_DIRECTORY = "/mirMark";
+    public static final String BASE_DIRECTORY = System.getProperty("user.home") + "/data/mirMark";
 
     public void doPost(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
 

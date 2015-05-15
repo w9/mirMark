@@ -1,23 +1,25 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
-             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
-    <g:ScrollPanel>
-        <g:HTMLPanel>
-            <g:Label ui:field="appTitle" addStyleNames="Highlighted">MirMark</g:Label>
-            <g:VerticalPanel>
-                <g:TextArea ui:field="arrayResults"/>
-                <g:HorizontalPanel>
-                    <g:InlineLabel text="Query:"/>
-                    <g:TextBox ui:field="utrSelect"/>
-                    <g:Button ui:field="selectButton" text="Select UTR"/>
-                </g:HorizontalPanel>
-                <g:HorizontalPanel>
-                    <g:InlineLabel text="Query:"/>
-                    <g:TextBox ui:field="mirSelect"/>
-                    <g:Button ui:field="selectMirButton" text="Select MIR"/>
-                </g:HorizontalPanel>
-            </g:VerticalPanel>
-        </g:HTMLPanel>
-    </g:ScrollPanel>
+             xmlns:b='urn:import:org.gwtbootstrap3.client.ui'
+             xmlns:b.gwt='urn:import:org.gwtbootstrap3.client.ui.gwt'>
+    <b:Container>
+        <b:Row>
+            <b:Row>
+                <b:Column size="MD_8">
+                    <b:TextBox ui:field="utrSelect" text="NM_005225"></b:TextBox>
+                </b:Column>
+                <b:Button ui:field="selectButton">Select UTR</b:Button>
+            </b:Row>
+            <b:Row>
+                <b:Column size="MD_8">
+                    <b:TextBox ui:field="mirSelect" text="hsa-miR-20a"></b:TextBox>
+                </b:Column>
+                <b:Button ui:field="selectMirButton">Select MIR</b:Button>
+            </b:Row>
+            <b.gwt:DataGrid ui:field="resultTable" bordered="true" condensed="true" striped="true"
+                            hover="true" height="800px" width="100%"></b.gwt:DataGrid>
+            <b:Pagination ui:field="resultTablePagination"></b:Pagination>
+        </b:Row>
+    </b:Container>
 </ui:UiBinder>
