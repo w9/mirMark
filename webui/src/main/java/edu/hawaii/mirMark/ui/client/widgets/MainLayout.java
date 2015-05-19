@@ -1,5 +1,6 @@
 package edu.hawaii.mirMark.ui.client.widgets;
 
+import com.allen_sauer.gwt.log.client.Log;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -15,8 +16,6 @@ import org.gwtbootstrap3.client.ui.gwt.DataGrid;
 
 import java.util.HashMap;
 import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class MainLayout extends ViewImpl {
     // It seems to me that GWT can infer the name of the *.ui.xml file by the class name (in this case MainLayout)
@@ -35,11 +34,9 @@ public class MainLayout extends ViewImpl {
     @UiField(provided = true)
     DataGrid<ResultData> resultTable = new DataGrid<>(Integer.MAX_VALUE);
     @UiField
-    Pagination resultTablePagination;
+    TextBox fThreshold;
 
     private ListDataProvider<ResultData> dataProvider = new ListDataProvider<>();
-
-    private Logger logger = Logger.getLogger("FrontPageLogger");
 
     public class ResultData {
         String mir;
@@ -113,26 +110,26 @@ public class MainLayout extends ViewImpl {
         // "MirMark.APP" sends you to the "resource center"; "get..." usually just gets you the private variable,
         // thus if you put projectActions as a public static variable in MirMark class, you can get it by just
         // MirMark.projectActions, instead of this scary phrase.
-        MirMark.APP.getProjectActions().selectUTR(utrSelect.getText(), new AsyncCallback<HashMap<String, Float>>() {
+        MirMark.APP.getProjectActions().selectUTR(utrSelect.getText(), fThreshold.getText(), new AsyncCallback<HashMap<String, Float>>() {
             @Override
             public void onFailure(Throwable caught) {
-                logger.log(Level.SEVERE, "Error loading");
+                Log.error("Error loading");
             }
 
             @Override
             public void onSuccess(HashMap<String, Float> result) {
                 if(result == null) {
-                    logger.log(Level.SEVERE, "No match found");
+                    Log.info("No match found");
                 } else {
                     Set<String> keys = result.keySet();
-                    int count = 0;
+                    dataProvider.getList().clear();
+                    resultTable.redraw();
                     for (String key : keys) {
-                        count++;
                         dataProvider.getList().add(new ResultData(utrSelect.getText(), key, result.get(key)));
-                        logger.log(Level.INFO, Float.toString(result.get(key)));
                     }
+                    Log.info(Integer.toString(dataProvider.getList().size()));
                     dataProvider.flush();
-                    logger.log(Level.INFO, "Returned: " + result.size());
+                    Log.info("Returned: " + result.size());
                 }
             }
         });
@@ -141,26 +138,24 @@ public class MainLayout extends ViewImpl {
     @SuppressWarnings({"unused"})
     @UiHandler({"selectMirButton"})
     void handleSelectMirClick(ClickEvent clickEvent) {
-        MirMark.APP.getProjectActions().selectMir(mirSelect.getText(), new AsyncCallback<HashMap<String, Float>>() {
+        MirMark.APP.getProjectActions().selectMir(mirSelect.getText(), fThreshold.getText(), new AsyncCallback<HashMap<String, Float>>() {
             @Override
             public void onFailure(Throwable caught) {
-                logger.log(Level.SEVERE, "Error loading");
+                Log.error("Error loading");
             }
 
             @Override
             public void onSuccess(HashMap<String, Float> result) {
                 if(result == null) {
-                    logger.log(Level.SEVERE, "No match found");
+                    Log.error("No match found");
                 } else {
                     Set<String> keys = result.keySet();
-                    int count = 0;
+                    dataProvider.getList().clear();
                     for (String key : keys) {
-                        count++;
                         dataProvider.getList().add(new ResultData(key, mirSelect.getText(), result.get(key)));
-                        logger.log(Level.INFO, Float.toString(result.get(key)));
                     }
                     dataProvider.flush();
-                    logger.log(Level.INFO, "Returned: " + result.size());
+                    Log.info("Returned: " + result.size());
                 }
             }
         });

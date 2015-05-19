@@ -11,7 +11,7 @@ public interface ProjectActions extends RemoteService {
 
     String executeUTR(String addressId, String timeId);
 
-    HashMap<String, Float> selectUTR(String utrSelectText);
+    HashMap<String, Float> selectUTR(String utrSelectText, String threshold);
 
-    HashMap<String, Float> selectMir(String mirSelectText);
+    HashMap<String, Float> selectMir(String mirSelectText, String threshold);
 }

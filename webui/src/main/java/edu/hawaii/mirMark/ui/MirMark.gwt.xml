@@ -6,6 +6,9 @@
     <inherits name="com.google.gwt.logging.Logging"/>
     <inherits name='org.gwtbootstrap3.GwtBootstrap3'/>
     <inherits name="com.gwtplatform.mvp.Mvp"/>
+    <inherits name="com.allen_sauer.gwt.log.gwt-log-DEBUG" />
+
+    <set-property name="log_DivLogger" value="DISABLED" />
 
     <source path="client"/>
     <source path="shared"/>

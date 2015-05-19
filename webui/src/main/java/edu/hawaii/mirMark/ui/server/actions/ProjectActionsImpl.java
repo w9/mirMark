@@ -12,9 +12,7 @@ import java.nio.channels.FileChannel;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashMap;
+import java.util.*;
 import java.util.function.Function;
 
 @SuppressWarnings ({"GwtServiceNotRegistered"})
@@ -76,6 +74,8 @@ public class ProjectActionsImpl extends RemoteServiceServlet implements ProjectA
         } catch(Exception exc) {
             exc.printStackTrace();
         }
+
+        // Load the dictionary for UTRs, it contains information about
     }
 
     @Override
@@ -112,21 +112,30 @@ public class ProjectActionsImpl extends RemoteServiceServlet implements ProjectA
     }
 
     @Override
-    public HashMap<String, Float> selectUTR(String utrSelectText) {
+    public HashMap<String, Float> selectUTR(String utrSelectText, String threshold) {
         if(!utrs.containsKey(utrSelectText)) return null;
         HashMap<String, Float> returnValue = new HashMap<>();
         int index = utrs.get(utrSelectText);
         mirs.keySet().stream().forEach(p -> returnValue.put(p, mirsToUtrs[mirs.get(p)][index]));
-        return returnValue;
+        HashMap<String, Float> filteredReturnValue = new HashMap<>();
+        returnValue.entrySet().stream()
+                .filter(entry -> entry.getValue() > Float.parseFloat(threshold))
+                .forEach(entry -> filteredReturnValue.put(entry.getKey(), entry.getValue()));
+        return filteredReturnValue;
     }
 
     @Override
-    public HashMap<String, Float> selectMir(String mirSelectText) {
+    public HashMap<String, Float> selectMir(String mirSelectText, String threshold) {
         if(!mirs.containsKey(mirSelectText)) return null;
         HashMap<String, Float> returnValue = new HashMap<>();
         int index = mirs.get(mirSelectText);
-        utrs.keySet().stream().forEach(p -> returnValue.put(p, mirsToUtrs[index][utrs.get(p)]));
-        return returnValue;
+        final HashMap<String, Float> finalReturnValue = returnValue;
+        utrs.keySet().stream().forEach(p -> finalReturnValue.put(p, mirsToUtrs[index][utrs.get(p)]));
+        HashMap<String, Float> filteredReturnValue = new HashMap<>();
+        returnValue.entrySet().stream()
+                .filter(entry -> entry.getValue() > Float.parseFloat(threshold))
+                .forEach(entry -> filteredReturnValue.put(entry.getKey(), entry.getValue()));
+        return filteredReturnValue;
     }
 }
 

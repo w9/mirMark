@@ -10,7 +10,7 @@ public interface ProjectActionsAsync {
 
     void executeUTR(String addressId, String timeId, AsyncCallback<String> asyncCallback);
 
-    void selectUTR(String utrSelectText, AsyncCallback<HashMap<String,Float>> asyncCallback);
+    void selectUTR(String utrSelectText, String threshold, AsyncCallback<HashMap<String, Float>> asyncCallback);
 
-    void selectMir(String mirSelectText, AsyncCallback<HashMap<String,Float>> asyncCallback);
+    void selectMir(String mirSelectText, String threshold, AsyncCallback<HashMap<String, Float>> asyncCallback);
 }

@@ -79,6 +79,7 @@
     <orderEntry type="library" name="Maven: commons-io:commons-io:2.4" level="project" />
     <orderEntry type="library" name="Maven: commons-fileupload:commons-fileupload:1.2" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.gwtbootstrap3:gwtbootstrap3:0.9.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.gwtbootstrap3:gwtbootstrap3-extras:0.9.1" level="project" />
     <orderEntry type="library" name="Maven: com.gwtplatform:gwtp-mvp-client:1.4" level="project" />
     <orderEntry type="library" name="Maven: com.gwtplatform:gwtp-clients-common:1.4" level="project" />
     <orderEntry type="library" name="Maven: com.google.inject:guice:3.0" level="project" />
@@ -94,5 +95,6 @@
     <orderEntry type="library" name="Maven: org.apache.velocity:velocity:1.7" level="project" />
     <orderEntry type="library" name="Maven: commons-collections:commons-collections:3.2.1" level="project" />
     <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.4" level="project" />
+    <orderEntry type="library" name="Maven: com.allen-sauer.gwt.log:gwt-log:3.3.2" level="project" />
   </component>
 </module>

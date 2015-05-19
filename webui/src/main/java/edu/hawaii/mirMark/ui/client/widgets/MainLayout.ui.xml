@@ -5,21 +5,36 @@
              xmlns:b.gwt='urn:import:org.gwtbootstrap3.client.ui.gwt'>
     <b:Container>
         <b:Row>
-            <b:Row>
-                <b:Column size="MD_8">
-                    <b:TextBox ui:field="utrSelect" text="NM_005225"></b:TextBox>
-                </b:Column>
-                <b:Button ui:field="selectButton">Select UTR</b:Button>
-            </b:Row>
-            <b:Row>
-                <b:Column size="MD_8">
-                    <b:TextBox ui:field="mirSelect" text="hsa-miR-20a"></b:TextBox>
-                </b:Column>
-                <b:Button ui:field="selectMirButton">Select MIR</b:Button>
-            </b:Row>
-            <b.gwt:DataGrid ui:field="resultTable" bordered="true" condensed="true" striped="true"
-                            hover="true" height="800px" width="100%"></b.gwt:DataGrid>
-            <b:Pagination ui:field="resultTablePagination"></b:Pagination>
+            <b:Column size="MD_4">
+                <b:InputGroup>
+                    <b:TextBox ui:field="utrSelect" text="NM_005225"/>
+                    <b:InputGroupButton>
+                        <b:Button ui:field="selectButton">Select UTR</b:Button>
+                    </b:InputGroupButton>
+                </b:InputGroup>
+            </b:Column>
+            <b:Column size="MD_4">
+                <b:InputGroup>
+                    <b:TextBox ui:field="mirSelect" text="hsa-miR-4446-3p"/>
+                    <b:InputGroupButton>
+                        <b:Button ui:field="selectMirButton">Select MIR</b:Button>
+                    </b:InputGroupButton>
+                </b:InputGroup>
+            </b:Column>
+            <b:Column size="MD_4">
+                <b:InputGroup>
+                    <b:InputGroupAddon>
+                        Threshold
+                    </b:InputGroupAddon>
+                    <b:TextBox ui:field="fThreshold" text="0.99"/>
+                </b:InputGroup>
+            </b:Column>
+        </b:Row>
+        <b:Row>
+            <b:Column size="MD_12">
+                <b.gwt:DataGrid ui:field="resultTable" bordered="true" condensed="true" striped="true"
+                                hover="true" height="800px" width="100%"/>
+            </b:Column>
         </b:Row>
     </b:Container>
 </ui:UiBinder>
