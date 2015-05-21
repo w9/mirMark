@@ -3,6 +3,7 @@ package edu.hawaii.mirMark.ui.server.actions;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import edu.hawaii.mirMark.ui.client.actions.ProjectActions;
 import edu.hawaii.mirMark.ui.servlets.MirMarkUploader;
+import edu.hawaii.mirMark.ui.shared.UtrLevelResultEntry;
 
 import java.io.*;
 import java.nio.ByteBuffer;
@@ -17,6 +18,9 @@ import java.util.function.Function;
 
 @SuppressWarnings ({"GwtServiceNotRegistered"})
 public class ProjectActionsImpl extends RemoteServiceServlet implements ProjectActions {
+    private final String utrDictionaryFILE = MirMarkUploader.BASE_DIRECTORY + "/UTR_dictionary.txt";
+    private HashMap<String, String> refseq2Symbol = new HashMap<>();
+    private HashMap<String, String> symbol2Refseq = new HashMap<>();
     public float [][] mirsToUtrs;
     public HashMap<String, Integer> utrs = new HashMap<>();
     public HashMap<String, Integer> mirs = new HashMap<>();
@@ -26,7 +30,6 @@ public class ProjectActionsImpl extends RemoteServiceServlet implements ProjectA
     private int numUtrs = 0;
 
     public ProjectActionsImpl() {
-        System.out.println(System.getProperty("user.dir"));
         try {
             Files.readAllLines(Paths.get(matrixUtrsFile), StandardCharsets.UTF_8)
                     .stream().map(st -> st.split("\\s+"))
@@ -46,21 +49,14 @@ public class ProjectActionsImpl extends RemoteServiceServlet implements ProjectA
             RandomAccessFile ras = new RandomAccessFile(matrixFeaturesFile, "r");
             FileChannel chan = ras.getChannel();
             ByteBuffer buffer = ByteBuffer.allocate(4*numUtrs);
-//            DataInputStream dis = new DataInputStream(new FileInputStream(matrixFeaturesFile));
+            //DataInputStream dis = new DataInputStream(new FileInputStream(matrixFeaturesFile));
             float f;
             int i = 0, j = 0;
             mirsToUtrs = new float[mirs.size()][numUtrs];
             System.err.println("Reading in file...");
-            boolean tenpercent = false;
-            boolean half = false;
             for(i = 0; i < mirs.size(); i++) {
-                if(!tenpercent && i/(1.0+mirs.size()) > 0.10) {
-                    System.err.println("Ten percent reached: " + i + "/" + mirs.size());
-                    tenpercent = true;
-                }
-                if(!half && i/(1.0+mirs.size()) > 0.50) {
-                    System.err.println("Halfway reached: " + i + "/" + mirs.size());
-                    half = true;
+                if (i % (mirs.size()/10) == 0) {
+                    System.err.println(i / (mirs.size() / 10) + "0%");
                 }
                 chan.read(buffer);
                 buffer.flip();
@@ -75,7 +71,17 @@ public class ProjectActionsImpl extends RemoteServiceServlet implements ProjectA
             exc.printStackTrace();
         }
 
-        // Load the dictionary for UTRs, it contains information about
+        // Create HashMap -- "GeneSymbol2UTR"
+        try {
+            Files.readAllLines(Paths.get(utrDictionaryFILE), StandardCharsets.UTF_8)
+                    .stream().map(st -> st.split("\t"))
+                    .forEach(u -> {
+                        symbol2Refseq.put(u[1], u[0]);
+                        refseq2Symbol.put(u[0], u[1]);
+                    });
+        } catch(Exception exc) {
+            exc.printStackTrace();
+        }
     }
 
     @Override
@@ -112,30 +118,44 @@ public class ProjectActionsImpl extends RemoteServiceServlet implements ProjectA
     }
 
     @Override
-    public HashMap<String, Float> selectUTR(String utrSelectText, String threshold) {
-        if(!utrs.containsKey(utrSelectText)) return null;
-        HashMap<String, Float> returnValue = new HashMap<>();
-        int index = utrs.get(utrSelectText);
-        mirs.keySet().stream().forEach(p -> returnValue.put(p, mirsToUtrs[mirs.get(p)][index]));
-        HashMap<String, Float> filteredReturnValue = new HashMap<>();
-        returnValue.entrySet().stream()
-                .filter(entry -> entry.getValue() > Float.parseFloat(threshold))
-                .forEach(entry -> filteredReturnValue.put(entry.getKey(), entry.getValue()));
-        return filteredReturnValue;
+    public ArrayList<UtrLevelResultEntry> queryRefseqId(String refseqId, String threshold) {
+        if(!utrs.containsKey(refseqId)) return null;
+
+        String symbol = refseq2Symbol.get(refseqId);
+        ArrayList<UtrLevelResultEntry> returnTable = new ArrayList<>();
+        int index = utrs.get(refseqId);
+        mirs.keySet().stream().forEach(p -> {
+            if (mirsToUtrs[mirs.get(p)][index] > Float.parseFloat(threshold)) {
+                returnTable.add(new UtrLevelResultEntry(symbol, refseqId, p, mirsToUtrs[mirs.get(p)][index]));
+            }
+        });
+        System.out.println("returnTable.size() = " + returnTable.size());
+        return returnTable;
     }
 
     @Override
-    public HashMap<String, Float> selectMir(String mirSelectText, String threshold) {
-        if(!mirs.containsKey(mirSelectText)) return null;
-        HashMap<String, Float> returnValue = new HashMap<>();
-        int index = mirs.get(mirSelectText);
-        final HashMap<String, Float> finalReturnValue = returnValue;
-        utrs.keySet().stream().forEach(p -> finalReturnValue.put(p, mirsToUtrs[index][utrs.get(p)]));
-        HashMap<String, Float> filteredReturnValue = new HashMap<>();
-        returnValue.entrySet().stream()
-                .filter(entry -> entry.getValue() > Float.parseFloat(threshold))
-                .forEach(entry -> filteredReturnValue.put(entry.getKey(), entry.getValue()));
-        return filteredReturnValue;
+    public ArrayList<UtrLevelResultEntry> queryMirName(String mirName, String threshold) {
+        if(!mirs.containsKey(mirName)) return null;
+
+        ArrayList<UtrLevelResultEntry> returnTable = new ArrayList<>();
+        int index = mirs.get(mirName);
+        utrs.keySet().stream().forEach(p -> {
+            if (mirsToUtrs[index][utrs.get(p)] > Float.parseFloat(threshold)) {
+                String pSymbol = refseq2Symbol.get(p);
+                if (pSymbol == null) pSymbol = "N/A";
+                returnTable.add(new UtrLevelResultEntry(pSymbol, p, mirName, mirsToUtrs[index][utrs.get(p)]));
+            }
+        });
+        return returnTable;
+    }
+
+    @Override
+    public ArrayList<UtrLevelResultEntry> querySymbol(String symbol, String threshold) {
+        // TODO: Here we should dispatch an Event -- "The gene symbol cannot be translated to RefSeq ID."
+        if (!symbol2Refseq.containsKey(symbol)) return null;
+        String refseqId = symbol2Refseq.get(symbol);
+
+        return queryRefseqId(refseqId, threshold);
     }
 }
 

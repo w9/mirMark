@@ -1,16 +1,18 @@
 package edu.hawaii.mirMark.ui.client.actions;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import edu.hawaii.mirMark.ui.shared.UtrLevelResultEntry;
 
-import java.util.HashMap;
-import java.util.Vector;
+import java.util.ArrayList;
 
 public interface ProjectActionsAsync {
     void executeSite(String addressId, String timeId, AsyncCallback<String> asyncCallback);
 
     void executeUTR(String addressId, String timeId, AsyncCallback<String> asyncCallback);
 
-    void selectUTR(String utrSelectText, String threshold, AsyncCallback<HashMap<String, Float>> asyncCallback);
+    void querySymbol(String query, String threshold, AsyncCallback<ArrayList<UtrLevelResultEntry>> async);
 
-    void selectMir(String mirSelectText, String threshold, AsyncCallback<HashMap<String, Float>> asyncCallback);
+    void queryRefseqId(String utrSelectText, String threshold, AsyncCallback<ArrayList<UtrLevelResultEntry>> async);
+
+    void queryMirName(String mirSelectText, String threshold, AsyncCallback<ArrayList<UtrLevelResultEntry>> async);
 }

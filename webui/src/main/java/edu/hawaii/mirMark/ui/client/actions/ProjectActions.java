@@ -2,8 +2,9 @@ package edu.hawaii.mirMark.ui.client.actions;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
+import edu.hawaii.mirMark.ui.shared.UtrLevelResultEntry;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 
 @RemoteServiceRelativePath ("Actions/Project")
 public interface ProjectActions extends RemoteService {
@@ -11,7 +12,9 @@ public interface ProjectActions extends RemoteService {
 
     String executeUTR(String addressId, String timeId);
 
-    HashMap<String, Float> selectUTR(String utrSelectText, String threshold);
+    ArrayList<UtrLevelResultEntry> queryRefseqId(String utrSelectText, String threshold);
 
-    HashMap<String, Float> selectMir(String mirSelectText, String threshold);
+    ArrayList<UtrLevelResultEntry> queryMirName(String mirSelectText, String threshold);
+
+    ArrayList<UtrLevelResultEntry> querySymbol(String query, String threshold);
 }

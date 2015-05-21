@@ -51,6 +51,8 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.gwtbootstrap3:gwtbootstrap3-extras:0.9.1" level="project" />
+    <orderEntry type="library" name="Maven: com.allen-sauer.gwt.log:gwt-log:3.3.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context:4.0.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:4.0.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: aopalliance:aopalliance:1.0" level="project" />

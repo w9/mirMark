@@ -7,6 +7,7 @@
     <inherits name='org.gwtbootstrap3.GwtBootstrap3'/>
     <inherits name="com.gwtplatform.mvp.Mvp"/>
     <inherits name="com.allen_sauer.gwt.log.gwt-log-DEBUG" />
+    <inherits name="org.gwtbootstrap3.extras.select.Select"/>
 
     <set-property name="log_DivLogger" value="DISABLED" />
 
