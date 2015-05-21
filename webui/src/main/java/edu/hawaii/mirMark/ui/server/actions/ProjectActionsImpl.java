@@ -9,12 +9,12 @@ import java.io.*;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
-import java.nio.channels.FileChannel;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.function.Function;
+import java.util.zip.GZIPInputStream;
 
 @SuppressWarnings ({"GwtServiceNotRegistered"})
 public class ProjectActionsImpl extends RemoteServiceServlet implements ProjectActions {
@@ -24,49 +24,42 @@ public class ProjectActionsImpl extends RemoteServiceServlet implements ProjectA
     public float [][] mirsToUtrs;
     public HashMap<String, Integer> utrs = new HashMap<>();
     public HashMap<String, Integer> mirs = new HashMap<>();
-    public String matrixFeaturesFile = MirMarkUploader.BASE_DIRECTORY + "/utr_features.matrix";
+    public String matrixFeaturesFile = MirMarkUploader.BASE_DIRECTORY + "/targetScan_utr_level_result_1524_30807.matrix";
+    public String matrixFeaturesFileGZIPed = matrixFeaturesFile + ".gz";
     public String matrixUtrsFile = matrixFeaturesFile + ".utrs";
     public String matrixMirsFile = matrixFeaturesFile + ".mirs";
     private int numUtrs = 0;
 
     public ProjectActionsImpl() {
         try {
+            // Read in UTR indices as hash table
             Files.readAllLines(Paths.get(matrixUtrsFile), StandardCharsets.UTF_8)
                     .stream().map(st -> st.split("\\s+"))
                     .forEach(u -> utrs.put(u[0], Integer.parseInt(u[1])));
 
             numUtrs = utrs.values().stream().max(Comparator.comparing(Function.identity())).get() + 1;
-            boolean [] checked = new boolean[numUtrs];
-            Arrays.fill(checked, Boolean.FALSE);
-            utrs.values().stream().forEach(p -> checked[p] = true);
-            System.err.println("Num utrs" +
-                    ": " + numUtrs);
+            System.err.println("Num utrs: " + numUtrs);
 
+            // Read in miR indices as hash table
             Files.readAllLines(Paths.get(matrixMirsFile), StandardCharsets.UTF_8)
                     .stream().map(st -> st.split("\\s+"))
                     .forEach(m -> mirs.put(m[0], Integer.parseInt(m[1])));
 
-            RandomAccessFile ras = new RandomAccessFile(matrixFeaturesFile, "r");
-            FileChannel chan = ras.getChannel();
-            ByteBuffer buffer = ByteBuffer.allocate(4*numUtrs);
-            //DataInputStream dis = new DataInputStream(new FileInputStream(matrixFeaturesFile));
-            float f;
-            int i = 0, j = 0;
+            DataInputStream stream = new DataInputStream(new GZIPInputStream(new FileInputStream(matrixFeaturesFileGZIPed)));
+            byte[] bytes = new byte[4 * numUtrs];
+            FloatBuffer floatBuffer = ByteBuffer.wrap(bytes).order(ByteOrder.LITTLE_ENDIAN).asFloatBuffer();
+
             mirsToUtrs = new float[mirs.size()][numUtrs];
             System.err.println("Reading in file...");
-            for(i = 0; i < mirs.size(); i++) {
+            for(int i = 0; i < mirs.size(); i++) {
                 if (i % (mirs.size()/10) == 0) {
-                    System.err.println(i / (mirs.size() / 10) + "0%");
+                    System.err.println(i / (mirs.size() / 10) * 10 + "%");
                 }
-                chan.read(buffer);
-                buffer.flip();
-                FloatBuffer floatBuffer = buffer.order(ByteOrder.LITTLE_ENDIAN).asFloatBuffer();
-                for(j = 0; j < numUtrs; j++) {
-                    if(checked[j])
-                        mirsToUtrs[i][j] = floatBuffer.get();
-                }
+                stream.readFully(bytes, 0, 4 * numUtrs);
+                floatBuffer.rewind();
+                for (int j = 0; j < numUtrs; j++) mirsToUtrs[i][j] = floatBuffer.get();
             }
-            System.err.println("Read in files: " + mirs.size() + " by " + numUtrs + " i=" + i + " j=" + j);
+            System.err.println("Read in files: " + mirs.size() + " by " + numUtrs);
         } catch(Exception exc) {
             exc.printStackTrace();
         }
