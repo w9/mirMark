@@ -11,6 +11,10 @@
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
+    <listener>
+        <listener-class>edu.hawaii.mirMark.ui.server.MirMarkServletContexListener</listener-class>
+    </listener>
+
     <servlet>
         <servlet-name>actions</servlet-name>
         <servlet-class>edu.hawaii.mirMark.ui.server.actions.ProjectActionsImpl</servlet-class>

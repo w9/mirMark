@@ -2,81 +2,18 @@ package edu.hawaii.mirMark.ui.server.actions;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import edu.hawaii.mirMark.ui.client.actions.ProjectActions;
+import edu.hawaii.mirMark.ui.server.Results;
 import edu.hawaii.mirMark.ui.servlets.MirMarkUploader;
 import edu.hawaii.mirMark.ui.shared.UtrLevelResultEntry;
 
 import java.io.*;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.FloatBuffer;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
-import java.util.function.Function;
-import java.util.zip.GZIPInputStream;
 
 @SuppressWarnings ({"GwtServiceNotRegistered"})
 public class ProjectActionsImpl extends RemoteServiceServlet implements ProjectActions {
-    private final String utrDictionaryFILE = MirMarkUploader.BASE_DIRECTORY + "/UTR_dictionary.txt";
-    private HashMap<String, String> refseq2Symbol = new HashMap<>();
-    private HashMap<String, String> symbol2Refseq = new HashMap<>();
-    public float [][] mirsToUtrs;
-    public HashMap<String, Integer> utrs = new HashMap<>();
-    public HashMap<String, Integer> mirs = new HashMap<>();
-    public String matrixFeaturesFile = MirMarkUploader.BASE_DIRECTORY + "/targetScan_utr_level_result_1524_30807.matrix";
-    public String matrixFeaturesFileGZIPed = matrixFeaturesFile + ".gz";
-    public String matrixUtrsFile = matrixFeaturesFile + ".utrs";
-    public String matrixMirsFile = matrixFeaturesFile + ".mirs";
-    private int numUtrs = 0;
-
-    public ProjectActionsImpl() {
-        try {
-            // Read in UTR indices as hash table
-            Files.readAllLines(Paths.get(matrixUtrsFile), StandardCharsets.UTF_8)
-                    .stream().map(st -> st.split("\\s+"))
-                    .forEach(u -> utrs.put(u[0], Integer.parseInt(u[1])));
-
-            numUtrs = utrs.values().stream().max(Comparator.comparing(Function.identity())).get() + 1;
-            System.err.println("Num utrs: " + numUtrs);
-
-            // Read in miR indices as hash table
-            Files.readAllLines(Paths.get(matrixMirsFile), StandardCharsets.UTF_8)
-                    .stream().map(st -> st.split("\\s+"))
-                    .forEach(m -> mirs.put(m[0], Integer.parseInt(m[1])));
-
-            DataInputStream stream = new DataInputStream(new GZIPInputStream(new FileInputStream(matrixFeaturesFileGZIPed)));
-            byte[] bytes = new byte[4 * numUtrs];
-            FloatBuffer floatBuffer = ByteBuffer.wrap(bytes).order(ByteOrder.LITTLE_ENDIAN).asFloatBuffer();
-
-            mirsToUtrs = new float[mirs.size()][numUtrs];
-            System.err.println("Reading in file...");
-            for(int i = 0; i < mirs.size(); i++) {
-                if (i % (mirs.size()/10) == 0) {
-                    System.err.println(i / (mirs.size() / 10) * 10 + "%");
-                }
-                stream.readFully(bytes, 0, 4 * numUtrs);
-                floatBuffer.rewind();
-                for (int j = 0; j < numUtrs; j++) mirsToUtrs[i][j] = floatBuffer.get();
-            }
-            System.err.println("Read in files: " + mirs.size() + " by " + numUtrs);
-        } catch(Exception exc) {
-            exc.printStackTrace();
-        }
-
-        // Create HashMap -- "GeneSymbol2UTR"
-        try {
-            Files.readAllLines(Paths.get(utrDictionaryFILE), StandardCharsets.UTF_8)
-                    .stream().map(st -> st.split("\t"))
-                    .forEach(u -> {
-                        symbol2Refseq.put(u[1], u[0]);
-                        refseq2Symbol.put(u[0], u[1]);
-                    });
-        } catch(Exception exc) {
-            exc.printStackTrace();
-        }
-    }
-
     @Override
     public String executeSite(String addressId, String timeId) {
         try {
@@ -112,14 +49,14 @@ public class ProjectActionsImpl extends RemoteServiceServlet implements ProjectA
 
     @Override
     public ArrayList<UtrLevelResultEntry> queryRefseqId(String refseqId, String threshold) {
-        if(!utrs.containsKey(refseqId)) return null;
+        if(!Results.utrs.containsKey(refseqId)) return null;
 
-        String symbol = refseq2Symbol.get(refseqId);
+        String symbol = Results.refseq2Symbol.get(refseqId);
         ArrayList<UtrLevelResultEntry> returnTable = new ArrayList<>();
-        int index = utrs.get(refseqId);
-        mirs.keySet().stream().forEach(p -> {
-            if (mirsToUtrs[mirs.get(p)][index] > Float.parseFloat(threshold)) {
-                returnTable.add(new UtrLevelResultEntry(symbol, refseqId, p, mirsToUtrs[mirs.get(p)][index]));
+        int index = Results.utrs.get(refseqId);
+        Results.mirs.keySet().stream().forEach(p -> {
+            if (Results.mirMarkProbs[Results.mirs.get(p)][index] > Float.parseFloat(threshold)) {
+                returnTable.add(new UtrLevelResultEntry(symbol, refseqId, p, Results.mirMarkProbs[Results.mirs.get(p)][index], Results.targetScanProbs[Results.mirs.get(p)][index]));
             }
         });
         System.out.println("returnTable.size() = " + returnTable.size());
@@ -128,15 +65,15 @@ public class ProjectActionsImpl extends RemoteServiceServlet implements ProjectA
 
     @Override
     public ArrayList<UtrLevelResultEntry> queryMirName(String mirName, String threshold) {
-        if(!mirs.containsKey(mirName)) return null;
+        if(!Results.mirs.containsKey(mirName)) return null;
 
         ArrayList<UtrLevelResultEntry> returnTable = new ArrayList<>();
-        int index = mirs.get(mirName);
-        utrs.keySet().stream().forEach(p -> {
-            if (mirsToUtrs[index][utrs.get(p)] > Float.parseFloat(threshold)) {
-                String pSymbol = refseq2Symbol.get(p);
+        int index = Results.mirs.get(mirName);
+        Results.utrs.keySet().stream().forEach(p -> {
+            if (Results.mirMarkProbs[index][Results.utrs.get(p)] > Float.parseFloat(threshold)) {
+                String pSymbol = Results.refseq2Symbol.get(p);
                 if (pSymbol == null) pSymbol = "N/A";
-                returnTable.add(new UtrLevelResultEntry(pSymbol, p, mirName, mirsToUtrs[index][utrs.get(p)]));
+                returnTable.add(new UtrLevelResultEntry(pSymbol, p, mirName, Results.mirMarkProbs[index][Results.utrs.get(p)], Results.targetScanProbs[index][Results.utrs.get(p)]));
             }
         });
         return returnTable;
@@ -145,8 +82,8 @@ public class ProjectActionsImpl extends RemoteServiceServlet implements ProjectA
     @Override
     public ArrayList<UtrLevelResultEntry> querySymbol(String symbol, String threshold) {
         // TODO: Here we should dispatch an Event -- "The gene symbol cannot be translated to RefSeq ID."
-        if (!symbol2Refseq.containsKey(symbol)) return null;
-        String refseqId = symbol2Refseq.get(symbol);
+        if (!Results.symbol2Refseq.containsKey(symbol)) return null;
+        String refseqId = Results.symbol2Refseq.get(symbol);
 
         return queryRefseqId(refseqId, threshold);
     }

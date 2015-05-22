@@ -17,6 +17,9 @@ import edu.hawaii.mirMark.ui.client.MirMark;
 import org.gwtbootstrap3.client.ui.gwt.DataGrid;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class MainLayout extends ViewImpl {
     private final NumberFormat decimalFormat = NumberFormat.getFormat("0.000");
@@ -43,7 +46,46 @@ public class MainLayout extends ViewImpl {
     @UiField
     Button querySymbolButton;
 
+    private MySortHandler sortHandler = new MySortHandler();
+
+    private TextColumn<UtrLevelResultEntry> mirMarkProbCol = new TextColumn<UtrLevelResultEntry>() {
+        @Override
+        public String getValue(UtrLevelResultEntry object) {
+            return decimalFormat.format(object.mirMarkProb);
+        }
+    };
+
     private ListDataProvider<UtrLevelResultEntry> dataProvider = new ListDataProvider<>();
+
+    private class MySortHandler implements ColumnSortEvent.Handler {
+        private Comparator<UtrLevelResultEntry> comparator = new Comparator<UtrLevelResultEntry>() {
+            @Override
+            public int compare(UtrLevelResultEntry o1, UtrLevelResultEntry o2) {
+                return Float.compare(o1.mirMarkProb, o2.mirMarkProb);
+            }
+        };
+
+        private boolean isSortAscending = true;
+
+        public void sortColumn(boolean isSortAscending) {
+            if (isSortAscending) {
+                Collections.sort(dataProvider.getList(), comparator);
+            } else {
+                Collections.sort(dataProvider.getList(), new Comparator<UtrLevelResultEntry>() {
+                    @Override
+                    public int compare(UtrLevelResultEntry o1, UtrLevelResultEntry o2) {
+                        return -comparator.compare(o1, o2);
+                    }
+                });
+            }
+            dataProvider.flush();
+        }
+
+        @Override
+        public void onColumnSort(ColumnSortEvent event) {
+            sortColumn(event.isSortAscending());
+        }
+    }
 
     public MainLayout() {
         // This is the widget---the puppet to be manipulated by this view.
@@ -72,13 +114,14 @@ public class MainLayout extends ViewImpl {
         // and provides handles to the user.
         initWidget(rootElement);
 
-        resultTable.addColumn(new TextColumn<UtrLevelResultEntry>() {
+
+        TextColumn<UtrLevelResultEntry> geneRefseqIdCol = new TextColumn<UtrLevelResultEntry>() {
             @Override
             public String getValue(UtrLevelResultEntry object) {
                 return object.geneRefseqId;
             }
-        }, "RefSeq ID");
-
+        };
+        resultTable.addColumn(geneRefseqIdCol, "RefSeq ID");
 
         resultTable.addColumn(new TextColumn<UtrLevelResultEntry>() {
             @Override
@@ -87,7 +130,6 @@ public class MainLayout extends ViewImpl {
             }
         }, "Gene Symbol");
 
-
         resultTable.addColumn(new TextColumn<UtrLevelResultEntry>() {
             @Override
             public String getValue(UtrLevelResultEntry object) {
@@ -95,12 +137,21 @@ public class MainLayout extends ViewImpl {
             }
         }, "MiR Name");
 
-        resultTable.addColumn(new TextColumn<UtrLevelResultEntry>() {
+        resultTable.addColumnSortHandler(sortHandler);
+        mirMarkProbCol.setSortable(true);
+        resultTable.addColumn(mirMarkProbCol, "MirMark Prob.");
+
+        TextColumn<UtrLevelResultEntry> targetScanProbCol = new TextColumn<UtrLevelResultEntry>() {
             @Override
             public String getValue(UtrLevelResultEntry object) {
-                return decimalFormat.format(object.probability);
+                if (Float.isNaN(object.targetScanProb)) {
+                    return "Not Sure";
+                } else {
+                    return decimalFormat.format(object.targetScanProb);
+                }
             }
-        }, "Probability");
+        };
+        resultTable.addColumn(targetScanProbCol, "TargetScan Prob.");
 
         dataProvider.addDataDisplay(resultTable);
     }
@@ -142,6 +193,8 @@ public class MainLayout extends ViewImpl {
             } else {
                 dataProvider.getList().clear();
                 dataProvider.setList(result);
+                resultTable.getColumnSortList().clear();
+                sortHandler.sortColumn(false);
                 dataProvider.flush();
                 Log.info("Returned: " + result.size());
             }
