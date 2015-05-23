@@ -18,39 +18,6 @@ import java.util.stream.IntStream;
 @SuppressWarnings ({"GwtServiceNotRegistered"})
 public class ProjectActionsImpl extends RemoteServiceServlet implements ProjectActions {
     @Override
-    public String executeSite(String addressId, String timeId) {
-        try {
-            String directory = MirMarkUploader.BASE_DIRECTORY + "/" + addressId + "/"  + timeId + "/";
-            Process p = new ProcessBuilder("siteFeaturesARFF.pl", "mirna.txt", "utr.txt", "fasta.txt", "pairs.txt", "site_features", "../../rf.site.model").directory(new File(directory)).redirectErrorStream(true).start();
-            BufferedReader br = new BufferedReader(new InputStreamReader(p.getErrorStream()));
-            BufferedReader brI = new BufferedReader(new InputStreamReader(p.getInputStream()));
-            p.waitFor();
-            String result = "Error log: ";
-            String line;
-            while((line = br.readLine()) != null) { result = result + line; }
-            while((line = brI.readLine()) != null) { result = result + line; }
-            if(p.exitValue() != 0) {
-                return result;
-            }
-            return new String(Files.readAllBytes(Paths.get(directory + "site_features.result")), StandardCharsets.UTF_8);
-        } catch (Exception e) {
-            return "Error in execution: " + e.getMessage();
-        }
-    }
-
-    @Override
-    public String executeUTR(String addressId, String timeId) {
-        try {
-            String directory = MirMarkUploader.BASE_DIRECTORY + "/" + addressId + "/"  + timeId + "/";
-            new ProcessBuilder("utrFeaturesARFF.pl", "mirna.txt", "utr.txt", "fasta.txt", "pairs.txt", "utr_features",
-                    "../../rf.utr.model").directory(new File(directory)).start().waitFor();
-            return new String(Files.readAllBytes(Paths.get(directory + "utr_features.result")), StandardCharsets.UTF_8);
-        } catch (Exception e) {
-            return "Error: " + e.getMessage();
-        }
-    }
-
-    @Override
     public ArrayList<UtrLevelResultEntry> queryRefseqId(String refseqId, String threshold) {
         if(!Results.utrs.containsKey(refseqId)) return null;
 
@@ -106,8 +73,8 @@ public class ProjectActionsImpl extends RemoteServiceServlet implements ProjectA
         } else {
             // More than one Refseq IDs match the query Symbol
             ArrayList<UtrLevelResultEntry> resultTable = new ArrayList<>();
-            for (int i = 0; i < possibleRefseqIds.size(); i++) {
-                resultTable.addAll(queryRefseqId(possibleRefseqIds.get(i), threshold));
+            for (String possibleRefseqId : possibleRefseqIds) {
+                resultTable.addAll(queryRefseqId(possibleRefseqId, threshold));
             }
             return resultTable;
         }

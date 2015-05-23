@@ -8,10 +8,6 @@ import java.util.ArrayList;
 
 @RemoteServiceRelativePath ("Actions/Project")
 public interface ProjectActions extends RemoteService {
-    String executeSite(String addressId, String timeId);
-
-    String executeUTR(String addressId, String timeId);
-
     ArrayList<UtrLevelResultEntry> queryRefseqId(String utrSelectText, String threshold);
 
     ArrayList<UtrLevelResultEntry> queryMirName(String mirSelectText, String threshold);

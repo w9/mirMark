@@ -1,8 +1,5 @@
 package edu.hawaii.mirMark.ui.server;
 
-/**
- * Created by xzhu on 5/21/15.
- */
 public class Paths {
     public static final String BASE_DIRECTORY = System.getProperty("user.home") + "/data/mirMark";
     public static final String MIR_MARK_MATRIX_GZ = BASE_DIRECTORY + "/mirMark_utr_svm_2578_42677.matrix.gz";
