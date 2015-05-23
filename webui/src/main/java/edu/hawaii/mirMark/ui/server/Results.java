@@ -13,9 +13,7 @@ import java.util.HashMap;
 import java.util.function.Function;
 import java.util.zip.GZIPInputStream;
 
-/**
- * Created by xzhu on 5/22/15.
- */
+
 public class Results {
     public static HashMap<String, String> refseq2Symbol;
     public static HashMap<String, ArrayList<String>> symbol2Refseq;
