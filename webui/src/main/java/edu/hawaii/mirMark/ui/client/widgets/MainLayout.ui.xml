@@ -24,7 +24,7 @@
             </b:Column>
             <b:Column size="MD_4">
                 <b:InputGroup>
-                    <b:TextBox ui:field="querySymbolTextBox">C10orf131</b:TextBox>
+                    <b:TextBox ui:field="querySymbolTextBox">TP53</b:TextBox>
                     <b:InputGroupButton>
                         <b:Button ui:field="querySymbolButton">Query by Gene Symbol</b:Button>
                     </b:InputGroupButton>

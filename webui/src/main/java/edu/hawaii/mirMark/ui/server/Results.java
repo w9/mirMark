@@ -7,7 +7,7 @@ import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.function.Function;
@@ -18,17 +18,18 @@ import java.util.zip.GZIPInputStream;
  */
 public class Results {
     public static HashMap<String, String> refseq2Symbol;
-    public static HashMap<String, String> symbol2Refseq;
+    public static HashMap<String, ArrayList<String>> symbol2Refseq;
     public static HashMap<String, Integer> utrs;
     public static HashMap<String, Integer> mirs;
     public static float [][] mirMarkProbs;
     public static float [][] targetScanProbs;
+    public static float [][] miRandaScores;
 
     public static void getReady() {
         try {
             // Read in UTR indices as hash table
             utrs = new HashMap<>();
-            Files.readAllLines(Paths.get(Constants.LIST_OF_UTRS), StandardCharsets.UTF_8)
+            Files.readAllLines(java.nio.file.Paths.get(Paths.LIST_OF_UTRS), StandardCharsets.UTF_8)
                     .stream().map(st -> st.split("\\s+"))
                     .forEach(u -> utrs.put(u[1], Integer.parseInt(u[0])-1));
 
@@ -39,7 +40,7 @@ public class Results {
 
             // Read in miR indices as hash table
             mirs = new HashMap<>();
-            Files.readAllLines(Paths.get(Constants.LIST_OF_MIRS), StandardCharsets.UTF_8)
+            Files.readAllLines(java.nio.file.Paths.get(Paths.LIST_OF_MIRS), StandardCharsets.UTF_8)
                     .stream().map(st -> st.split("\\s+"))
                     .forEach(m -> mirs.put(m[1], Integer.parseInt(m[0])-1));
 
@@ -47,7 +48,7 @@ public class Results {
 
 
 
-            DataInputStream stream = new DataInputStream(new GZIPInputStream(new FileInputStream(Constants.MIR_MARK_MATRIX_GZ)));
+            DataInputStream stream = new DataInputStream(new GZIPInputStream(new FileInputStream(Paths.MIR_MARK_MATRIX_GZ)));
             byte[] bytes = new byte[4 * numUtrs];
             FloatBuffer floatBuffer = ByteBuffer.wrap(bytes).order(ByteOrder.LITTLE_ENDIAN).asFloatBuffer();
 
@@ -64,7 +65,8 @@ public class Results {
             System.err.println("Read in files: " + numMirs + " by " + numUtrs);
 
 
-            stream = new DataInputStream(new GZIPInputStream(new FileInputStream(Constants.TARGET_SCAN_MATRIX_GZ)));
+
+            stream = new DataInputStream(new GZIPInputStream(new FileInputStream(Paths.TARGET_SCAN_MATRIX_GZ)));
             bytes = new byte[4 * numUtrs];
             floatBuffer = ByteBuffer.wrap(bytes).order(ByteOrder.LITTLE_ENDIAN).asFloatBuffer();
 
@@ -80,13 +82,39 @@ public class Results {
             }
             System.err.println("Read in files: " + numMirs + " by " + numUtrs);
 
+
+
+            stream = new DataInputStream(new GZIPInputStream(new FileInputStream(Paths.MIRANDA_MATRIX_GZ)));
+            bytes = new byte[4 * numUtrs];
+            floatBuffer = ByteBuffer.wrap(bytes).order(ByteOrder.LITTLE_ENDIAN).asFloatBuffer();
+
+            miRandaScores = new float[numMirs][numUtrs];
+            System.err.println("Reading in miRanda matrix ...");
+            for(int i = 0; i < numMirs; i++) {
+                if (i % (numMirs/10) == 0) {
+                    System.err.println(i / (numMirs / 10) * 10 + "%");
+                }
+                stream.readFully(bytes, 0, 4 * numUtrs);
+                floatBuffer.rewind();
+                for (int j = 0; j < numUtrs; j++) miRandaScores[i][j] = floatBuffer.get();
+            }
+            System.err.println("Read in files: " + numMirs + " by " + numUtrs);
+
+
+
             refseq2Symbol = new HashMap<>();
             symbol2Refseq = new HashMap<>();
-            Files.readAllLines(Paths.get(Constants.UTR_METADATA), StandardCharsets.UTF_8)
+            Files.readAllLines(java.nio.file.Paths.get(Paths.UTR_METADATA), StandardCharsets.UTF_8)
                     .stream().map(st -> st.split("\t"))
                     .forEach(u -> {
-                        //TODO: This is not a unique mapping, maybe we need a choosing interface.
-                        symbol2Refseq.put(u[1], u[0]);
+                        if (symbol2Refseq.get(u[1]) == null) {
+                            symbol2Refseq.put(u[1], new ArrayList<String>() {{
+                                add(u[0]);
+                            }});
+                        } else {
+                            symbol2Refseq.get(u[1]).add(u[0]);
+                        }
+
                         refseq2Symbol.put(u[0], u[1]);
                     });
 

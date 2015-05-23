@@ -1,6 +1,5 @@
 package edu.hawaii.mirMark.ui.client.widgets;
 
-import com.allen_sauer.gwt.log.client.Log;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.i18n.client.NumberFormat;
@@ -15,9 +14,13 @@ import org.gwtbootstrap3.client.ui.*;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import edu.hawaii.mirMark.ui.client.MirMark;
 import org.gwtbootstrap3.client.ui.gwt.DataGrid;
+import org.gwtbootstrap3.extras.animate.client.ui.constants.Animation;
+import org.gwtbootstrap3.extras.notify.client.constants.NotifyPlacement;
+import org.gwtbootstrap3.extras.notify.client.constants.NotifyType;
+import org.gwtbootstrap3.extras.notify.client.ui.Notify;
+import org.gwtbootstrap3.extras.notify.client.ui.NotifySettings;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 
@@ -46,26 +49,17 @@ public class MainLayout extends ViewImpl {
     @UiField
     Button querySymbolButton;
 
-    private MySortHandler sortHandler = new MySortHandler();
+    private final MySortHandler sortHandler = new MySortHandler();
 
-    private TextColumn<UtrLevelResultEntry> mirMarkProbCol = new TextColumn<UtrLevelResultEntry>() {
-        @Override
-        public String getValue(UtrLevelResultEntry object) {
-            return decimalFormat.format(object.mirMarkProb);
-        }
-    };
+    private final ListDataProvider<UtrLevelResultEntry> dataProvider = new ListDataProvider<>();
 
-    private ListDataProvider<UtrLevelResultEntry> dataProvider = new ListDataProvider<>();
-
-    private class MySortHandler implements ColumnSortEvent.Handler {
+    private final class MySortHandler implements ColumnSortEvent.Handler {
         private Comparator<UtrLevelResultEntry> comparator = new Comparator<UtrLevelResultEntry>() {
             @Override
             public int compare(UtrLevelResultEntry o1, UtrLevelResultEntry o2) {
                 return Float.compare(o1.mirMarkProb, o2.mirMarkProb);
             }
         };
-
-        private boolean isSortAscending = true;
 
         public void sortColumn(boolean isSortAscending) {
             if (isSortAscending) {
@@ -88,6 +82,7 @@ public class MainLayout extends ViewImpl {
     }
 
     public MainLayout() {
+
         // This is the widget---the puppet to be manipulated by this view.
         //
         // Container is a IsWidget:
@@ -103,6 +98,8 @@ public class MainLayout extends ViewImpl {
         // element.
         Container rootElement = _sUIBinder.createAndBindUi(this);
 
+
+
         // Here we can write some java-coded contents for the front-end---logic that needs to be
         // done before the displaying of the view.
         // ...
@@ -115,13 +112,13 @@ public class MainLayout extends ViewImpl {
         initWidget(rootElement);
 
 
-        TextColumn<UtrLevelResultEntry> geneRefseqIdCol = new TextColumn<UtrLevelResultEntry>() {
+
+        resultTable.addColumn(new TextColumn<UtrLevelResultEntry>() {
             @Override
             public String getValue(UtrLevelResultEntry object) {
                 return object.geneRefseqId;
             }
-        };
-        resultTable.addColumn(geneRefseqIdCol, "RefSeq ID");
+        }, "RefSeq ID");
 
         resultTable.addColumn(new TextColumn<UtrLevelResultEntry>() {
             @Override
@@ -138,10 +135,16 @@ public class MainLayout extends ViewImpl {
         }, "MiR Name");
 
         resultTable.addColumnSortHandler(sortHandler);
+        TextColumn<UtrLevelResultEntry> mirMarkProbCol = new TextColumn<UtrLevelResultEntry>() {
+            @Override
+            public String getValue(UtrLevelResultEntry object) {
+                return decimalFormat.format(object.mirMarkProb);
+            }
+        };
         mirMarkProbCol.setSortable(true);
-        resultTable.addColumn(mirMarkProbCol, "MirMark Prob.");
+        resultTable.addColumn(mirMarkProbCol, "MirMark Probability");
 
-        TextColumn<UtrLevelResultEntry> targetScanProbCol = new TextColumn<UtrLevelResultEntry>() {
+        resultTable.addColumn(new TextColumn<UtrLevelResultEntry>() {
             @Override
             public String getValue(UtrLevelResultEntry object) {
                 if (Float.isNaN(object.targetScanProb)) {
@@ -150,8 +153,18 @@ public class MainLayout extends ViewImpl {
                     return decimalFormat.format(object.targetScanProb);
                 }
             }
-        };
-        resultTable.addColumn(targetScanProbCol, "TargetScan Prob.");
+        }, "TargetScan Probability");
+
+        resultTable.addColumn(new TextColumn<UtrLevelResultEntry>() {
+            @Override
+            public String getValue(UtrLevelResultEntry object) {
+                if (Float.isNaN(object.miRandaScore)) {
+                    return "Not Sure";
+                } else {
+                    return decimalFormat.format(object.miRandaScore);
+                }
+            }
+        }, "MiRanda Score");
 
         dataProvider.addDataDisplay(resultTable);
     }
@@ -183,21 +196,36 @@ public class MainLayout extends ViewImpl {
     private class ResultTableCallback implements AsyncCallback<ArrayList<UtrLevelResultEntry>> {
         @Override
         public void onFailure(Throwable caught) {
-            Log.error("Error loading");
+            notify("Error Loading.", NotifyType.WARNING);
         }
 
         @Override
         public void onSuccess(ArrayList<UtrLevelResultEntry> result) {
             if(result == null) {
-                Log.error("No match found");
+                dataProvider.getList().clear();
+                dataProvider.flush();
+                notify("No match found.", NotifyType.WARNING);
             } else {
                 dataProvider.getList().clear();
                 dataProvider.setList(result);
                 resultTable.getColumnSortList().clear();
                 sortHandler.sortColumn(false);
                 dataProvider.flush();
-                Log.info("Returned: " + result.size());
+                notify("Returned: " + result.size(), NotifyType.SUCCESS);
             }
+        }
+
+        private void notify(String msg, NotifyType t) {
+            NotifySettings notifySettings = NotifySettings.newSettings();
+            notifySettings.setTemplate("<div data-notify=\"container\" class=\"col-xs-11 col-sm-3 alert alert-{0}\" role=\"alert\">\n" +
+                    "    <button type=\"button\" aria-hidden=\"true\" class=\"close\" data-notify=\"dismiss\">x</button>\n" +
+                    "    <span data-notify=\"message\">{2}</span>\n" +
+                    "</div>");
+            notifySettings.setPlacement(NotifyPlacement.BOTTOM_CENTER);
+            notifySettings.setAnimation(Animation.FADE_IN_UP, Animation.FADE_OUT_DOWN);
+            notifySettings.setType(t);
+
+            Notify.notify(msg, notifySettings);
         }
     }
 }

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="707393e3-d373-4848-8147-b4291bf05622" name="Default" comment="dafasfdafa">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/server/Constants.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/server/MirMarkServletContexListener.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/server/Results.java" />
+    <list default="true" id="707393e3-d373-4848-8147-b4291bf05622" name="Default" comment="">
+      <change type="MOVED" beforePath="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/server/Constants.java" afterPath="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/server/Paths.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/widgets/MainLayout.java" afterPath="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/widgets/MainLayout.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/widgets/MainLayout.ui.xml" afterPath="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/widgets/MainLayout.ui.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/public/MirMark.css" afterPath="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/public/MirMark.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/MirMark.gwt.xml" afterPath="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/MirMark.gwt.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/server/actions/ProjectActionsImpl.java" afterPath="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/server/actions/ProjectActionsImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webui/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/webui/src/main/webapp/WEB-INF/web.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/server/Results.java" afterPath="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/server/Results.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="mirMark.iws" />
@@ -38,19 +39,96 @@
         <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/widgets/MainLayout.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="126" column="21" selection-start-line="126" selection-start-column="21" selection-end-line="126" selection-end-column="21" />
+              <caret line="231" column="0" selection-start-line="231" selection-start-column="0" selection-end-line="231" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2118#2119#0" expanded="true" />
-                <element signature="e#2189#2190#0" expanded="true" />
-                <element signature="e#3344#3345#0" expanded="true" />
-                <element signature="e#3403#3404#0" expanded="true" />
-                <element signature="e#4904#4905#0" expanded="true" />
-                <element signature="e#4962#4963#0" expanded="true" />
-                <element signature="e#5192#5193#0" expanded="true" />
-                <element signature="e#5248#5249#0" expanded="true" />
-                <element signature="e#5433#5434#0" expanded="true" />
-                <element signature="e#5486#5487#0" expanded="true" />
+                <element signature="e#3316#3317#0" expanded="true" />
+                <element signature="e#3375#3376#0" expanded="true" />
+                <element signature="e#4852#4853#0" expanded="true" />
+                <element signature="e#4910#4911#0" expanded="true" />
+                <element signature="e#5093#5094#0" expanded="true" />
+                <element signature="e#5149#5150#0" expanded="true" />
+                <element signature="e#5334#5335#0" expanded="true" />
+                <element signature="e#5387#5388#0" expanded="true" />
+                <element signature="e#5651#5652#0" expanded="true" />
+                <element signature="e#5730#5731#0" expanded="true" />
+                <element signature="e#8205#8206#0" expanded="true" />
+                <element signature="e#8273#8274#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Results.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/server/Results.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="42" column="71" selection-start-line="42" selection-start-column="70" selection-end-line="42" selection-end-column="71" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Paths.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/server/Paths.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.32761312">
+              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainLayout.ui.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/widgets/MainLayout.ui.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="11" column="40" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProjectActionsAsync.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/actions/ProjectActionsAsync.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Animation.java" pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/gwtbootstrap3/gwtbootstrap3-extras/0.9.1/gwtbootstrap3-extras-0.9.1-sources.jar!/org/gwtbootstrap3/extras/animate/client/ui/constants/Animation.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="71" column="4" selection-start-line="71" selection-start-column="4" selection-end-line="71" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProjectActions.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/actions/ProjectActions.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MirMarkApp.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/MirMarkApp.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="36" column="36" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="36" />
+              <folding>
+                <element signature="e#1698#1699#0" expanded="true" />
+                <element signature="e#1736#1737#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -60,96 +138,18 @@
         <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/server/actions/ProjectActionsImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="57" column="24" selection-start-line="57" selection-start-column="24" selection-end-line="57" selection-end-column="24" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RemoteServiceServlet.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-user/2.7.0/gwt-user-2.7.0-sources.jar!/com/google/gwt/user/server/rpc/RemoteServiceServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="42" column="13" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
+              <caret line="63" column="33" selection-start-line="63" selection-start-column="33" selection-end-line="63" selection-end-column="33" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Constants.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/server/Constants.java">
+      <file leaf-file-name="UtrLevelResultEntry.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/shared/UtrLevelResultEntry.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
+              <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MirMarkServletContexListener.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/server/MirMarkServletContexListener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="27" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#334#335#0" expanded="true" />
-                <element signature="e#368#369#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="web.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/webui/src/main/webapp/WEB-INF/web.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.65960914">
-              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="applicationContext.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webui/src/main/webapp/WEB-INF/applicationContext.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="actions-servlet.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webui/src/main/webapp/WEB-INF/actions-servlet.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ContextLoaderListener.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.0.3.RELEASE/spring-web-4.0.3.RELEASE-sources.jar!/org/springframework/web/context/ContextLoaderListener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="92" column="25" selection-start-line="92" selection-start-column="25" selection-end-line="92" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Results.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/server/Results.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="26" column="35" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -183,19 +183,21 @@
         <option value="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/servlets/MirMarkUploader.java" />
         <option value="$PROJECT_DIR$/webui/pom.xml" />
         <option value="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/actions/ProjectActions.java" />
-        <option value="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/public/MirMark.css" />
         <option value="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/shared/MirMarkData.java" />
         <option value="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/actions/ProjectActionsAsync.java" />
-        <option value="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/MirMark.gwt.xml" />
         <option value="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/server/Constants.java" />
-        <option value="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/widgets/MainLayout.ui.xml" />
-        <option value="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/shared/UtrLevelResultEntry.java" />
-        <option value="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/widgets/MainLayout.java" />
         <option value="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/MirMark.java" />
         <option value="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/server/MirMarkServletContexListener.java" />
-        <option value="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/server/actions/ProjectActionsImpl.java" />
-        <option value="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/server/Results.java" />
         <option value="$PROJECT_DIR$/webui/src/main/webapp/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/MirMark.gwt.xml" />
+        <option value="/HTML Fragment (MainLayout.java:3535).html" />
+        <option value="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/public/MirMark.css" />
+        <option value="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/widgets/MainLayout.ui.xml" />
+        <option value="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/server/Results.java" />
+        <option value="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/server/actions/ProjectActionsImpl.java" />
+        <option value="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/shared/UtrLevelResultEntry.java" />
+        <option value="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/widgets/MainLayout.java" />
+        <option value="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/server/Paths.java" />
       </list>
     </option>
   </component>
@@ -293,6 +295,276 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="mirMark" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mirMark" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Maven: org.gwtbootstrap3:gwtbootstrap3-extras:0.9.1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gwtbootstrap3-extras-0.9.1.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="extras" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mirMark" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Maven: org.gwtbootstrap3:gwtbootstrap3-extras:0.9.1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gwtbootstrap3-extras-0.9.1.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="extras" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="notify" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mirMark" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Maven: org.gwtbootstrap3:gwtbootstrap3-extras:0.9.1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gwtbootstrap3-extras-0.9.1.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="extras" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="notify" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mirMark" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Maven: org.gwtbootstrap3:gwtbootstrap3-extras:0.9.1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gwtbootstrap3-extras-0.9.1.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="extras" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="notify" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mirMark" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Maven: org.gwtbootstrap3:gwtbootstrap3-extras:0.9.1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gwtbootstrap3-extras-0.9.1.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mirMark" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; 1.8 &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mirMark" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; 1.8 &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rt.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mirMark" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; 1.8 &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rt.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mirMark" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; 1.8 &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rt.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stream" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mirMark" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; 1.8 &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rt.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mirMark" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; 1.8 &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rt.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -1174,7 +1446,7 @@
       <workItem from="1432071733624" duration="11571000" />
       <workItem from="1432089454594" duration="6104000" />
       <workItem from="1432145755674" duration="6962000" />
-      <workItem from="1432168657800" duration="36075000" />
+      <workItem from="1432168657800" duration="53616000" />
     </task>
     <task id="LOCAL-00001" summary="fasfadfa">
       <created>1432175789492</created>
@@ -1188,11 +1460,17 @@
       <option name="project" value="LOCAL" />
       <updated>1432186068696</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="dafasfdafa">
+      <created>1432321029007</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1432321029007</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="165064000" />
+    <option name="totallyTimeSpent" value="182605000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1922" height="1055" extended-state="6" />
@@ -1200,14 +1478,14 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32881" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32881" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32985386" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30625" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31210855" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3006263" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32941177" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1215,6 +1493,7 @@
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.50537634" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32985386" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Dynamic Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24375" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1227,7 +1506,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" x="99" y="100" width="1722" height="855" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32985386" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1260,101 +1538,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-user/2.7.0/gwt-user-2.7.0-sources.jar!/com/google/gwt/core/shared/GWT.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.5823466">
-          <caret line="82" column="49" selection-start-line="82" selection-start-column="49" selection-end-line="82" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-user/2.7.0/gwt-user-2.7.0-sources.jar!/com/google/gwt/core/client/GWT.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4133477">
-          <caret line="85" column="50" selection-start-line="85" selection-start-column="50" selection-end-line="85" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webui/webui.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="93" column="29" selection-start-line="93" selection-start-column="29" selection-end-line="93" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webui/src/main/webapp/testPhastCons.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-user/2.7.0/gwt-user-2.7.0-sources.jar!/com/google/gwt/view/client/ListDataProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="448" column="17" selection-start-line="448" selection-start-column="17" selection-end-line="448" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-user/2.7.0/gwt-user-2.7.0.jar!/com/google/gwt/emul/java/util/List.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2652733">
-          <caret line="25" column="10" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-user/2.7.0/gwt-user-2.7.0-sources.jar!/com/google/gwt/user/cellview/client/DataGrid.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36495176">
-          <caret line="83" column="34" selection-start-line="83" selection-start-column="34" selection-end-line="83" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webui/src/main/webapp/pos_utr_level_pairs.txt">
-      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="14" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/AllMessages.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="40" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/function/BiFunction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="43" column="17" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/Set.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="82" column="3" selection-start-line="82" selection-start-column="3" selection-end-line="82" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/Map.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="359" column="6" selection-start-line="359" selection-start-column="6" selection-end-line="359" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/lib/idea.jar!/standardSchemas/XMLSchema.xsd">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334">
@@ -1402,6 +1585,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1436,16 +1620,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/actions/ProjectActions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/io/InputStream.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1454,50 +1628,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/public/MirMark.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/MirMark.gwt.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-user/2.7.0/gwt-user-2.7.0-sources.jar!/com/google/web/bindery/requestfactory/shared/impl/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.14285715">
           <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/servlets/MirMarkUploader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="48" selection-start-line="15" selection-start-column="48" selection-end-line="15" selection-end-column="98" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/widgets/MainLayout.ui.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="34" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/shared/UtrLevelResultEntry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
           <folding />
         </state>
       </provider>
@@ -1559,80 +1693,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/MirMarkApp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="8" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="8" />
-          <folding>
-            <element signature="e#1698#1699#0" expanded="true" />
-            <element signature="e#1736#1737#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/MirMark.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="53" selection-start-line="3" selection-start-column="53" selection-end-line="3" selection-end-column="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1577#1578#0" expanded="true" />
-            <element signature="e#1636#1637#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/actions/ProjectActionsAsync.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/widgets/MainLayout.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="126" column="21" selection-start-line="126" selection-start-column="21" selection-end-line="126" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2118#2119#0" expanded="true" />
-            <element signature="e#2189#2190#0" expanded="true" />
-            <element signature="e#3344#3345#0" expanded="true" />
-            <element signature="e#3403#3404#0" expanded="true" />
-            <element signature="e#4904#4905#0" expanded="true" />
-            <element signature="e#4962#4963#0" expanded="true" />
-            <element signature="e#5192#5193#0" expanded="true" />
-            <element signature="e#5248#5249#0" expanded="true" />
-            <element signature="e#5433#5434#0" expanded="true" />
-            <element signature="e#5486#5487#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-user/2.7.0/gwt-user-2.7.0-sources.jar!/com/google/gwt/user/server/rpc/RemoteServiceServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="42" column="13" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/server/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/server/actions/ProjectActionsImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="57" column="24" selection-start-line="57" selection-start-column="24" selection-end-line="57" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1660,14 +1725,332 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/webui/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/MirMark.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/server/MirMarkServletContexListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="27" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#334#335#0" expanded="true" />
-            <element signature="e#368#369#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/servlets/MirMarkUploader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="40" column="44" selection-start-line="40" selection-start-column="44" selection-end-line="40" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/ArrayList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="181" column="11" selection-start-line="181" selection-start-column="11" selection-end-line="181" selection-end-column="11" />
+          <folding>
+            <element signature="e#6252#6253#0" expanded="false" />
+            <element signature="e#6320#6321#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/stream/IntStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="793" column="28" selection-start-line="793" selection-start-column="28" selection-end-line="793" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/MirMark.gwt.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="61" selection-start-line="9" selection-start-column="61" selection-end-line="9" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/gwtbootstrap3/gwtbootstrap3-extras/0.9.1/gwtbootstrap3-extras-0.9.1.jar!/org/gwtbootstrap3/extras/notify/client/ui/Notify.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3654485">
+          <caret line="49" column="38" selection-start-line="49" selection-start-column="38" selection-end-line="49" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/gwtbootstrap3/gwtbootstrap3-extras/0.9.1/gwtbootstrap3-extras-0.9.1-sources.jar!/org/gwtbootstrap3/extras/notify/client/ui/Notify.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="140" column="38" selection-start-line="140" selection-start-column="38" selection-end-line="140" selection-end-column="38" />
+          <folding>
+            <marker date="1426522974000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426522974000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426522974000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426522974000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426522974000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426522974000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426522974000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426522974000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426522974000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426522974000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426522974000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426522974000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426522974000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426522974000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426522974000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426522974000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426522974000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426522974000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426522974000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426522974000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1426522974000" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/lang/Object.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="270" column="29" selection-start-line="270" selection-start-column="29" selection-end-line="270" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/AllMessages.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/public/MirMark.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/gwtbootstrap3/gwtbootstrap3-extras/0.9.1/gwtbootstrap3-extras-0.9.1-sources.jar!/org/gwtbootstrap3/extras/animate/client/ui/constants/Animation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="71" column="4" selection-start-line="71" selection-start-column="4" selection-end-line="71" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/gwtbootstrap3/gwtbootstrap3-extras/0.9.1/gwtbootstrap3-extras-0.9.1.jar!/org/gwtbootstrap3/extras/notify/client/ui/NotifySettings.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="251" column="70" selection-start-line="251" selection-start-column="70" selection-end-line="251" selection-end-column="70" />
+          <folding>
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/gwtbootstrap3/gwtbootstrap3-extras/0.9.1/gwtbootstrap3-extras-0.9.1.jar!/org/gwtbootstrap3/extras/notify/client/resource/css/bootstrap-notify-custom.min.cache.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1" column="43" selection-start-line="1" selection-start-column="43" selection-end-line="1" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/gwtbootstrap3/gwtbootstrap3-extras/0.9.1/gwtbootstrap3-extras-0.9.1.jar!/org/gwtbootstrap3/extras/notify/client/resource/js/bootstrap-notify-3.0.0.min.cache.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.02446982">
+          <caret line="1" column="7354" selection-start-line="1" selection-start-column="7354" selection-end-line="1" selection-end-column="7354" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/gwtbootstrap3/gwtbootstrap3-extras/0.9.1/gwtbootstrap3-extras-0.9.1.jar!/org/gwtbootstrap3/extras/notify/client/ui/Notify.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34747145">
+          <caret line="56" column="13" selection-start-line="56" selection-start-column="13" selection-end-line="56" selection-end-column="13" />
+          <folding>
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1429763956000" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/gwtbootstrap3/gwtbootstrap3-extras/0.9.1/gwtbootstrap3-extras-0.9.1-sources.jar!/org/gwtbootstrap3/extras/notify/client/ui/NotifySettings.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.0016314">
+          <caret line="381" column="29" selection-start-line="381" selection-start-column="29" selection-end-line="381" selection-end-column="29" />
+          <folding>
+            <element signature="e#2123#2124#0" expanded="true" />
+            <element signature="e#2184#2185#0" expanded="true" />
+            <marker date="1427648592000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1427648592000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1427648592000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1427648592000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1427648592000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1427648592000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1427648592000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1427648592000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1427648592000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1427648592000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1427648592000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1427648592000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1427648592000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1427648592000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1427648592000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1427648592000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1427648592000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1427648592000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1427648592000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1427648592000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1427648592000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1427648592000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1427648592000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1427648592000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1427648592000" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/AllMessages.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.09787928">
+          <caret line="4" column="40" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/MirMarkApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="36" column="36" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="36" />
+          <folding>
+            <element signature="e#1698#1699#0" expanded="true" />
+            <element signature="e#1736#1737#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/widgets/MainLayout.ui.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="40" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/server/actions/ProjectActionsImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="63" column="33" selection-start-line="63" selection-start-column="33" selection-end-line="63" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/shared/UtrLevelResultEntry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/actions/ProjectActions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/actions/ProjectActionsAsync.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/widgets/MainLayout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="231" column="0" selection-start-line="231" selection-start-column="0" selection-end-line="231" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3316#3317#0" expanded="true" />
+            <element signature="e#3375#3376#0" expanded="true" />
+            <element signature="e#4852#4853#0" expanded="true" />
+            <element signature="e#4910#4911#0" expanded="true" />
+            <element signature="e#5093#5094#0" expanded="true" />
+            <element signature="e#5149#5150#0" expanded="true" />
+            <element signature="e#5334#5335#0" expanded="true" />
+            <element signature="e#5387#5388#0" expanded="true" />
+            <element signature="e#5651#5652#0" expanded="true" />
+            <element signature="e#5730#5731#0" expanded="true" />
+            <element signature="e#8205#8206#0" expanded="true" />
+            <element signature="e#8273#8274#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1675,17 +2058,17 @@
     <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/server/Results.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="35" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
+          <caret line="42" column="71" selection-start-line="42" selection-start-column="70" selection-end-line="42" selection-end-column="71" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webui/src/main/webapp/WEB-INF/web.xml">
+    <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/server/Paths.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.65960914">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.32761312">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding />
         </state>
       </provider>
