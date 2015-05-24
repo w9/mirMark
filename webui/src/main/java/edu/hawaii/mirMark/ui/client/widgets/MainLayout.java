@@ -7,6 +7,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.cellview.client.*;
+import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.view.client.ListDataProvider;
 import com.gwtplatform.mvp.client.ViewImpl;
 import edu.hawaii.mirMark.ui.shared.UtrLevelResultEntry;
@@ -14,18 +15,21 @@ import org.gwtbootstrap3.client.ui.*;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import edu.hawaii.mirMark.ui.client.MirMark;
 import org.gwtbootstrap3.client.ui.gwt.DataGrid;
-import org.gwtbootstrap3.extras.animate.client.ui.constants.Animation;
-import org.gwtbootstrap3.extras.notify.client.constants.NotifyPlacement;
 import org.gwtbootstrap3.extras.notify.client.constants.NotifyType;
-import org.gwtbootstrap3.extras.notify.client.ui.Notify;
-import org.gwtbootstrap3.extras.notify.client.ui.NotifySettings;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.*;
 
+@SuppressWarnings("Convert2Lambda")
 public class MainLayout extends ViewImpl {
     private final NumberFormat decimalFormat = NumberFormat.getFormat("0.000");
+    @SuppressWarnings("FieldCanBeLocal")
+    private final TextColumn<UtrLevelResultEntry> miRandaScoreCol;
+    @SuppressWarnings("FieldCanBeLocal")
+    private final TextColumn<UtrLevelResultEntry> targetScanProbCol;
+    @SuppressWarnings("FieldCanBeLocal")
+    private final TextColumn<UtrLevelResultEntry> mirNameCol;
+    @SuppressWarnings("FieldCanBeLocal")
+    private final TextColumn<UtrLevelResultEntry> geneSymbolCol;
 
     // It seems to me that GWT can infer the name of the *.ui.xml file by the class name (in this case MainLayout)
     interface MainLayoutUIBinder extends UiBinder<Container, MainLayout> {}
@@ -49,35 +53,55 @@ public class MainLayout extends ViewImpl {
     @UiField
     Button querySymbolButton;
 
-    private final MySortHandler sortHandler = new MySortHandler();
+    TextColumn<UtrLevelResultEntry> mirMarkProbCol;
 
     private final ListDataProvider<UtrLevelResultEntry> dataProvider = new ListDataProvider<>();
 
-    private final class MySortHandler implements ColumnSortEvent.Handler {
-        private Comparator<UtrLevelResultEntry> comparator = new Comparator<UtrLevelResultEntry>() {
-            @Override
-            public int compare(UtrLevelResultEntry o1, UtrLevelResultEntry o2) {
-                return Float.compare(o1.mirMarkProb, o2.mirMarkProb);
-            }
-        };
+    private final MySortHandler sortHandler = new MySortHandler();
 
-        public void sortColumn(boolean isSortAscending) {
+    // I had to copy the definition of ListHander<T> class here to fix that missing flush bug.
+    // Now it has been heavily modified and localized.
+    public class MySortHandler implements ColumnSortEvent.Handler {
+        private final Map<Column<?, ?>, Comparator<UtrLevelResultEntry>> comparators = new HashMap<>();
+        private List<UtrLevelResultEntry> list;
+
+        public void sortColumn(Column<?, ?> column, boolean isSortAscending) {
+            list = dataProvider.getList();
+
+            // Get the comparator.
+            final Comparator<UtrLevelResultEntry> comparator = comparators.get(column);
+            if (comparator == null) {
+                MyNotify.notify("The comparator is not found.", NotifyType.DANGER);
+                return;
+            }
+
+            // Sort using the comparator.
             if (isSortAscending) {
-                Collections.sort(dataProvider.getList(), comparator);
+                Collections.sort(list, comparator);
             } else {
-                Collections.sort(dataProvider.getList(), new Comparator<UtrLevelResultEntry>() {
-                    @Override
+                Collections.sort(list, new Comparator<UtrLevelResultEntry>() {
                     public int compare(UtrLevelResultEntry o1, UtrLevelResultEntry o2) {
                         return -comparator.compare(o1, o2);
                     }
                 });
             }
+
+            // !!! This is what I added !!!
+            dataProvider.refresh();
             dataProvider.flush();
         }
 
-        @Override
         public void onColumnSort(ColumnSortEvent event) {
-            sortColumn(event.isSortAscending());
+            // Get the sorted column.
+            Column<?, ?> column = event.getColumn();
+            if (column == null) {
+                return;
+            }
+            sortColumn(column, event.isSortAscending());
+        }
+
+        public void setComparator(Column<UtrLevelResultEntry, ?> column, Comparator<UtrLevelResultEntry> comparator) {
+            comparators.put(column, comparator);
         }
     }
 
@@ -120,31 +144,59 @@ public class MainLayout extends ViewImpl {
             }
         }, "RefSeq ID");
 
-        resultTable.addColumn(new TextColumn<UtrLevelResultEntry>() {
+        geneSymbolCol = new TextColumn<UtrLevelResultEntry>() {
             @Override
             public String getValue(UtrLevelResultEntry object) {
                 return object.geneSymbol;
             }
-        }, "Gene Symbol");
+        };
+        geneSymbolCol.setSortable(true);
+        sortHandler.setComparator(geneSymbolCol, new Comparator<UtrLevelResultEntry>() {
+            @Override
+            public int compare(UtrLevelResultEntry o1, UtrLevelResultEntry o2) {
+                return o1.geneSymbol.compareTo(o2.geneSymbol);
+            }
+        });
+        resultTable.addColumn(geneSymbolCol, "Gene Symbol");
 
-        resultTable.addColumn(new TextColumn<UtrLevelResultEntry>() {
+
+
+        mirNameCol = new TextColumn<UtrLevelResultEntry>() {
             @Override
             public String getValue(UtrLevelResultEntry object) {
                 return object.mirName;
             }
-        }, "MiR Name");
+        };
+        mirNameCol.setSortable(true);
+        sortHandler.setComparator(mirNameCol, new Comparator<UtrLevelResultEntry>() {
+            @Override
+            public int compare(UtrLevelResultEntry o1, UtrLevelResultEntry o2) {
+                return o1.mirName.compareTo(o2.mirName);
+            }
+        });
+        resultTable.addColumn(mirNameCol, "MiR Name");
+
+
 
         resultTable.addColumnSortHandler(sortHandler);
-        TextColumn<UtrLevelResultEntry> mirMarkProbCol = new TextColumn<UtrLevelResultEntry>() {
+        mirMarkProbCol = new TextColumn<UtrLevelResultEntry>() {
             @Override
             public String getValue(UtrLevelResultEntry object) {
                 return decimalFormat.format(object.mirMarkProb);
             }
         };
+        sortHandler.setComparator(mirMarkProbCol, new Comparator<UtrLevelResultEntry>() {
+            @Override
+            public int compare(UtrLevelResultEntry o1, UtrLevelResultEntry o2) {
+                return Float.compare(o1.mirMarkProb, o2.mirMarkProb);
+            }
+        });
         mirMarkProbCol.setSortable(true);
         resultTable.addColumn(mirMarkProbCol, "MirMark Probability");
 
-        resultTable.addColumn(new TextColumn<UtrLevelResultEntry>() {
+
+
+        targetScanProbCol = new TextColumn<UtrLevelResultEntry>() {
             @Override
             public String getValue(UtrLevelResultEntry object) {
                 if (Float.isNaN(object.targetScanProb)) {
@@ -153,9 +205,23 @@ public class MainLayout extends ViewImpl {
                     return decimalFormat.format(object.targetScanProb);
                 }
             }
-        }, "TargetScan Probability");
+        };
+        targetScanProbCol.setSortable(true);
+        sortHandler.setComparator(targetScanProbCol, new Comparator<UtrLevelResultEntry>() {
+            @Override
+            public int compare(UtrLevelResultEntry o1, UtrLevelResultEntry o2) {
+                // Since for targetScan score, the larger the better,
+                // in order to put NaN as the worst, we need it to be -Inf
+                float s1 = Float.isNaN(o1.targetScanProb) ? Float.NEGATIVE_INFINITY : o1.targetScanProb;
+                float s2 = Float.isNaN(o2.targetScanProb) ? Float.NEGATIVE_INFINITY : o2.targetScanProb;
+                return Float.compare(s1, s2);
+            }
+        });
+        resultTable.addColumn(targetScanProbCol, "TargetScan Probability");
 
-        resultTable.addColumn(new TextColumn<UtrLevelResultEntry>() {
+
+
+        miRandaScoreCol = new TextColumn<UtrLevelResultEntry>() {
             @Override
             public String getValue(UtrLevelResultEntry object) {
                 if (Float.isNaN(object.miRandaScore)) {
@@ -164,7 +230,19 @@ public class MainLayout extends ViewImpl {
                     return decimalFormat.format(object.miRandaScore);
                 }
             }
-        }, "MiRanda Score");
+        };
+        sortHandler.setComparator(miRandaScoreCol, new Comparator<UtrLevelResultEntry>() {
+            @Override
+            public int compare(UtrLevelResultEntry o1, UtrLevelResultEntry o2) {
+                // Since for miRanda score, the smaller (more negative) the better,
+                // in order to put NaN as the worst, we need it to be +Inf
+                float s1 = Float.isNaN(o1.miRandaScore) ? Float.POSITIVE_INFINITY : o1.miRandaScore;
+                float s2 = Float.isNaN(o2.miRandaScore) ? Float.POSITIVE_INFINITY : o2.miRandaScore;
+                return Float.compare(s1, s2);
+            }
+        });
+        miRandaScoreCol.setSortable(true);
+        resultTable.addColumn(miRandaScoreCol, "MiRanda Score");
 
         dataProvider.addDataDisplay(resultTable);
     }
@@ -196,7 +274,7 @@ public class MainLayout extends ViewImpl {
     private class ResultTableCallback implements AsyncCallback<ArrayList<UtrLevelResultEntry>> {
         @Override
         public void onFailure(Throwable caught) {
-            notify("Error Loading.", NotifyType.WARNING);
+            MyNotify.notify("Error Loading.", NotifyType.WARNING);
         }
 
         @Override
@@ -204,28 +282,18 @@ public class MainLayout extends ViewImpl {
             if(result == null) {
                 dataProvider.getList().clear();
                 dataProvider.flush();
-                notify("No match found.", NotifyType.WARNING);
+                MyNotify.notify("No match found.", NotifyType.WARNING);
             } else {
-                dataProvider.getList().clear();
+                // Update the View using the Model
                 dataProvider.setList(result);
-                resultTable.getColumnSortList().clear();
-                sortHandler.sortColumn(false);
+                dataProvider.refresh();
                 dataProvider.flush();
-                notify("Returned: " + result.size(), NotifyType.SUCCESS);
+
+                // Sort it by mirMark probabilities
+                resultTable.getColumnSortList().clear();
+                sortHandler.sortColumn(mirMarkProbCol, false);
+                MyNotify.notify("Returned: " + result.size(), NotifyType.SUCCESS);
             }
-        }
-
-        private void notify(String msg, NotifyType t) {
-            NotifySettings notifySettings = NotifySettings.newSettings();
-            notifySettings.setTemplate("<div data-notify=\"container\" class=\"col-xs-11 col-sm-3 alert alert-{0}\" role=\"alert\">\n" +
-                    "    <button type=\"button\" aria-hidden=\"true\" class=\"close\" data-notify=\"dismiss\">x</button>\n" +
-                    "    <span data-notify=\"message\">{2}</span>\n" +
-                    "</div>");
-            notifySettings.setPlacement(NotifyPlacement.BOTTOM_CENTER);
-            notifySettings.setAnimation(Animation.FADE_IN_UP, Animation.FADE_OUT_DOWN);
-            notifySettings.setType(t);
-
-            Notify.notify(msg, notifySettings);
         }
     }
 }
