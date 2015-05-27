@@ -62,8 +62,6 @@ public class Results {
             }
             System.err.println("Read in files: " + numMirs + " by " + numUtrs);
 
-
-
             stream = new DataInputStream(new GZIPInputStream(new FileInputStream(Paths.TARGET_SCAN_MATRIX_GZ)));
             bytes = new byte[4 * numUtrs];
             floatBuffer = ByteBuffer.wrap(bytes).order(ByteOrder.LITTLE_ENDIAN).asFloatBuffer();

@@ -6,9 +6,9 @@ import edu.hawaii.mirMark.ui.shared.UtrLevelResultEntry;
 import java.util.ArrayList;
 
 public interface ProjectActionsAsync {
-    void querySymbol(String query, String threshold, AsyncCallback<ArrayList<UtrLevelResultEntry>> async);
+    void querySymbol(String query, String threshold, String methodOfChoice, AsyncCallback<ArrayList<UtrLevelResultEntry>> async);
 
-    void queryRefseqId(String utrSelectText, String threshold, AsyncCallback<ArrayList<UtrLevelResultEntry>> async);
+    void queryRefseqId(String utrSelectText, String threshold, String methodOfChoice, AsyncCallback<ArrayList<UtrLevelResultEntry>> async);
 
-    void queryMirName(String mirSelectText, String threshold, AsyncCallback<ArrayList<UtrLevelResultEntry>> async);
+    void queryMirName(String mirSelectText, String threshold, String methodOfChoice, AsyncCallback<ArrayList<UtrLevelResultEntry>> async);
 }

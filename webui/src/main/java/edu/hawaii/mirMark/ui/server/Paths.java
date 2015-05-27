@@ -2,7 +2,7 @@ package edu.hawaii.mirMark.ui.server;
 
 public class Paths {
     public static final String BASE_DIRECTORY = System.getProperty("user.home") + "/data/mirMark";
-    public static final String MIR_MARK_MATRIX_GZ = BASE_DIRECTORY + "/mirMark_utr_svm_2578_42677.matrix.gz";
+    public static final String MIR_MARK_MATRIX_GZ = BASE_DIRECTORY + "/mirMark_2578_42677.matrix.gz";
     public static final String TARGET_SCAN_MATRIX_GZ = BASE_DIRECTORY + "/targetScan_2578_42677.matrix.gz";
     public static final String LIST_OF_MIRS = BASE_DIRECTORY + "/list_of_mirs.txt";
     public static final String LIST_OF_UTRS = BASE_DIRECTORY + "/list_of_utrs.txt";

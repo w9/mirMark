@@ -2,6 +2,7 @@ package edu.hawaii.mirMark.ui.client.widgets;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.i18n.client.NumberFormat;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -10,6 +11,7 @@ import com.google.gwt.user.cellview.client.*;
 import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.view.client.ListDataProvider;
 import com.gwtplatform.mvp.client.ViewImpl;
+import edu.hawaii.mirMark.ui.server.actions.ProjectActionsImpl;
 import edu.hawaii.mirMark.ui.shared.UtrLevelResultEntry;
 import org.gwtbootstrap3.client.ui.*;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -30,6 +32,9 @@ public class MainLayout extends ViewImpl {
     private final TextColumn<UtrLevelResultEntry> mirNameCol;
     @SuppressWarnings("FieldCanBeLocal")
     private final TextColumn<UtrLevelResultEntry> geneSymbolCol;
+    @SuppressWarnings("FieldCanBeLocal")
+    private final TextColumn<UtrLevelResultEntry> refseqIdCol;
+    private String methodOfChoice;
 
     // It seems to me that GWT can infer the name of the *.ui.xml file by the class name (in this case MainLayout)
     interface MainLayoutUIBinder extends UiBinder<Container, MainLayout> {}
@@ -44,14 +49,13 @@ public class MainLayout extends ViewImpl {
     @UiField Button queryRefseqButton;
     @UiField TextBox queryMirNameTextBox;
     @UiField Button queryMirNameButton;
-    @UiField(provided = true)
-    DataGrid<UtrLevelResultEntry> resultTable = new DataGrid<>(Integer.MAX_VALUE);
-    @UiField
-    TextBox fThreshold;
-    @UiField
-    TextBox querySymbolTextBox;
-    @UiField
-    Button querySymbolButton;
+    @UiField(provided = true) DataGrid<UtrLevelResultEntry> resultTable = new DataGrid<>(Integer.MAX_VALUE);
+    @UiField TextBox fThreshold;
+    @UiField TextBox querySymbolTextBox;
+    @UiField Button querySymbolButton;
+    @UiField InlineRadio fMethodOfChoiceMirMark;
+    @UiField InlineRadio fMethodOfChoiceTargetScan;
+    @UiField InlineRadio fMethodOfChoiceMiRanda;
 
     TextColumn<UtrLevelResultEntry> mirMarkProbCol;
 
@@ -88,7 +92,6 @@ public class MainLayout extends ViewImpl {
 
             // !!! This is what I added !!!
             dataProvider.refresh();
-            dataProvider.flush();
         }
 
         public void onColumnSort(ColumnSortEvent event) {
@@ -137,12 +140,22 @@ public class MainLayout extends ViewImpl {
 
 
 
-        resultTable.addColumn(new TextColumn<UtrLevelResultEntry>() {
+        refseqIdCol = new TextColumn<UtrLevelResultEntry>() {
             @Override
             public String getValue(UtrLevelResultEntry object) {
                 return object.geneRefseqId;
             }
-        }, "RefSeq ID");
+        };
+        refseqIdCol.setSortable(true);
+        sortHandler.setComparator(refseqIdCol, new Comparator<UtrLevelResultEntry>() {
+            @Override
+            public int compare(UtrLevelResultEntry o1, UtrLevelResultEntry o2) {
+                return o1.geneRefseqId.compareTo(o2.geneRefseqId);
+            }
+        });
+        resultTable.addColumn(refseqIdCol, "RefSeq ID");
+
+
 
         geneSymbolCol = new TextColumn<UtrLevelResultEntry>() {
             @Override
@@ -245,30 +258,51 @@ public class MainLayout extends ViewImpl {
         resultTable.addColumn(miRandaScoreCol, "MiRanda Score");
 
         dataProvider.addDataDisplay(resultTable);
+
+        // Select MirMark as the method of choice
+        fMethodOfChoiceMirMark.setValue(true, true);
     }
 
     // GWT recognize that this event handler is for click event based on its type.
     // GWT separated events into many types like KeyDownEvent, MouseOutEvent, etc.r
     @SuppressWarnings({"unused"})
     @UiHandler({"queryRefseqButton"})
-    void handleSelectClick(ClickEvent clickEvent) {
+    void handleQueryRefseqClick(ClickEvent clickEvent) {
         // "MirMark.APP.get..." is just an idiom:
         // "MirMark.APP" sends you to the "resource center"; "get..." usually just gets you the private variable,
         // thus if you put projectActions as a public static variable in MirMark class, you can get it by just
         // MirMark.projectActions, instead of this scary phrase.
-        MirMark.APP.getProjectActions().queryRefseqId(queryRefseqTextBox.getText(), fThreshold.getText(), new ResultTableCallback());
+        MirMark.APP.getProjectActions().queryRefseqId(queryRefseqTextBox.getText(), fThreshold.getText(), methodOfChoice, new ResultTableCallback());
     }
 
     @SuppressWarnings({"unused"})
     @UiHandler({"queryMirNameButton"})
-    void handleSelectMirClick(ClickEvent clickEvent) {
-        MirMark.APP.getProjectActions().queryMirName(queryMirNameTextBox.getText(), fThreshold.getText(), new ResultTableCallback());
+    void handleQueryMirNameClick(ClickEvent clickEvent) {
+        MirMark.APP.getProjectActions().queryMirName(queryMirNameTextBox.getText(), fThreshold.getText(), methodOfChoice, new ResultTableCallback());
     }
 
     @SuppressWarnings({"unused"})
     @UiHandler("querySymbolButton")
-    public void handleClick(ClickEvent event) {
-        MirMark.APP.getProjectActions().querySymbol(querySymbolTextBox.getText(), fThreshold.getText(), new ResultTableCallback());
+    public void handleQuerySymbolClick(ClickEvent event) {
+        MirMark.APP.getProjectActions().querySymbol(querySymbolTextBox.getText(), fThreshold.getText(), methodOfChoice, new ResultTableCallback());
+    }
+
+    @UiHandler("fMethodOfChoiceMirMark")
+    public void handleMethodOfChoiceMirMarkValueChange(@SuppressWarnings("UnusedParameters") ValueChangeEvent<Boolean> event) {
+        fThreshold.setText("0.99");
+        methodOfChoice = ProjectActionsImpl.Methods.MIR_MARK;
+    }
+
+    @UiHandler("fMethodOfChoiceTargetScan")
+    public void handleMethodOfChoiceTargetScanValueChange(@SuppressWarnings("UnusedParameters") ValueChangeEvent<Boolean> event) {
+        fThreshold.setText("0");
+        methodOfChoice = ProjectActionsImpl.Methods.TARGET_SCAN;
+    }
+
+    @UiHandler("fMethodOfChoiceMiRanda")
+    public void handleMethodOfChoiceMiRandaValueChange(@SuppressWarnings("UnusedParameters") ValueChangeEvent<Boolean> event) {
+        fThreshold.setText("-999");
+        methodOfChoice = ProjectActionsImpl.Methods.MIRANDA;
     }
 
     private class ResultTableCallback implements AsyncCallback<ArrayList<UtrLevelResultEntry>> {
@@ -287,7 +321,6 @@ public class MainLayout extends ViewImpl {
                 // Update the View using the Model
                 dataProvider.setList(result);
                 dataProvider.refresh();
-                dataProvider.flush();
 
                 // Sort it by mirMark probabilities
                 resultTable.getColumnSortList().clear();
