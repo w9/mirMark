@@ -15,9 +15,12 @@
 
     <source path="client"/>
     <source path="shared"/>
-    <source path="data"/>
+    <!--<source path="public"/>-->
 
-    <source path="public"/>
+    <!--If no <public> element is defined in a module XML file, the public subpackage is implicitly added to the
+    public path as if <public path="public"> had been found in the XML. This default helps keep module XML compact
+    for standard project layouts. -->
+
     <stylesheet src="MirMark.css"/>
 
 	<entry-point class="edu.hawaii.mirMark.ui.client.MirMark"/>

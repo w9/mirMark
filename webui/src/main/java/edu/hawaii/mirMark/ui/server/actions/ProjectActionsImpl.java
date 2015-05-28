@@ -7,7 +7,7 @@ import edu.hawaii.mirMark.ui.shared.UtrLevelResultEntry;
 
 import java.util.*;
 
-@SuppressWarnings ({"GwtServiceNotRegistered"})
+
 public class ProjectActionsImpl extends RemoteServiceServlet implements ProjectActions {
     private float[][] getMatrixFromMethod(String methodOfChoice) {
         switch (methodOfChoice) {
@@ -34,6 +34,7 @@ public class ProjectActionsImpl extends RemoteServiceServlet implements ProjectA
 
         if(!Results.utrs.containsKey(refseqId)) return null;
 
+        // TODO: Do not return more than 1000 results.
         String symbol = Results.refseq2Symbol.get(refseqId);
         ArrayList<UtrLevelResultEntry> returnTable = new ArrayList<>();
         int index = Results.utrs.get(refseqId);

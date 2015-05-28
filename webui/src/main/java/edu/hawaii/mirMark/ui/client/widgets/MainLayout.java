@@ -63,6 +63,8 @@ public class MainLayout extends ViewImpl {
 
     private final MySortHandler sortHandler = new MySortHandler();
 
+    // TODO: Handle a list of request instead of just one gene/miR
+
     // I had to copy the definition of ListHander<T> class here to fix that missing flush bug.
     // Now it has been heavily modified and localized.
     public class MySortHandler implements ColumnSortEvent.Handler {
