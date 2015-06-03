@@ -11,4 +11,10 @@ public interface ProjectActionsAsync {
     void queryRefseqId(String utrSelectText, String threshold, String methodOfChoice, AsyncCallback<ArrayList<UtrLevelResultEntry>> async);
 
     void queryMirName(String mirSelectText, String threshold, String methodOfChoice, AsyncCallback<ArrayList<UtrLevelResultEntry>> async);
+
+    void getSymbols(AsyncCallback<String[]> asyncCallback);
+
+    void getRefseqs(AsyncCallback<String[]> asyncCallback);
+
+    void getMirNames(AsyncCallback<String[]> asyncCallback);
 }

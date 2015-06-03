@@ -19,9 +19,10 @@ public class Results {
     public static HashMap<String, ArrayList<String>> symbol2Refseq;
     public static HashMap<String, Integer> utrs;
     public static HashMap<String, Integer> mirs;
-    public static float [][] mirMarkProbs;
-    public static float [][] targetScanProbs;
-    public static float [][] miRandaScores;
+    public static float[][] mirMarkProbs;
+    public static float[][] targetScanProbs;
+    public static float[][] miRandaScores;
+    public static float[][] mirTarBasePositives;
 
     public static void getReady() {
         try {
@@ -62,6 +63,8 @@ public class Results {
             }
             System.err.println("Read in files: " + numMirs + " by " + numUtrs);
 
+
+
             stream = new DataInputStream(new GZIPInputStream(new FileInputStream(Paths.TARGET_SCAN_MATRIX_GZ)));
             bytes = new byte[4 * numUtrs];
             floatBuffer = ByteBuffer.wrap(bytes).order(ByteOrder.LITTLE_ENDIAN).asFloatBuffer();
@@ -93,6 +96,24 @@ public class Results {
                 stream.readFully(bytes, 0, 4 * numUtrs);
                 floatBuffer.rewind();
                 for (int j = 0; j < numUtrs; j++) miRandaScores[i][j] = floatBuffer.get();
+            }
+            System.err.println("Read in files: " + numMirs + " by " + numUtrs);
+
+
+
+            stream = new DataInputStream(new GZIPInputStream(new FileInputStream(Paths.MIRTARBASE)));
+            bytes = new byte[4 * numUtrs];
+            floatBuffer = ByteBuffer.wrap(bytes).order(ByteOrder.LITTLE_ENDIAN).asFloatBuffer();
+
+            mirTarBasePositives = new float[numMirs][numUtrs];
+            System.err.println("Reading in mirTarBasePositives matrix ...");
+            for(int i = 0; i < numMirs; i++) {
+                if (i % (numMirs/10) == 0) {
+                    System.err.println(i / (numMirs / 10) * 10 + "%");
+                }
+                stream.readFully(bytes, 0, 4 * numUtrs);
+                floatBuffer.rewind();
+                for (int j = 0; j < numUtrs; j++) mirTarBasePositives[i][j] = floatBuffer.get();
             }
             System.err.println("Read in files: " + numMirs + " by " + numUtrs);
 

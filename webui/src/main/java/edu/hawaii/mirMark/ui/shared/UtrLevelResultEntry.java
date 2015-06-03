@@ -11,14 +11,16 @@ public class UtrLevelResultEntry implements IsSerializable {
     public float mirMarkProb;
     public float targetScanProb;
     public float miRandaScore;
+    public float mirTarBasePositive;
 
-    public UtrLevelResultEntry(String geneSymbol, String geneRefseqId, String mirName, float mirMarkProb, float targetScanProb, float miRandaScore) {
+    public UtrLevelResultEntry(String geneSymbol, String geneRefseqId, String mirName, float mirMarkProb, float targetScanProb, float miRandaScore, float mirTarBasePositive) {
         this.geneSymbol = geneSymbol;
         this.geneRefseqId = geneRefseqId;
         this.mirName = mirName;
         this.mirMarkProb = mirMarkProb;
         this.targetScanProb = targetScanProb;
         this.miRandaScore = miRandaScore;
+        this.mirTarBasePositive = mirTarBasePositive;
     }
 
     public UtrLevelResultEntry() {

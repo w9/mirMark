@@ -4,12 +4,21 @@
              xmlns:g="urn:import:com.google.gwt.user.client.ui"
              xmlns:b='urn:import:org.gwtbootstrap3.client.ui'
              xmlns:b.gwt='urn:import:org.gwtbootstrap3.client.ui.gwt'
-             xmlns:b.select='urn:import:org.gwtbootstrap3.extras.select.client.ui'>
+             xmlns:b.html='urn:import:org.gwtbootstrap3.client.ui.html'
+             xmlns:typeahead="urn:import:org.gwtbootstrap3.extras.typeahead.client.ui">
     <b:Container>
         <b:Row>
             <b:Column size="MD_4">
                 <b:InputGroup>
-                    <b:TextBox ui:field="queryRefseqTextBox">NM_005225</b:TextBox>
+                    <typeahead:Typeahead ui:field="querySymbolTypeahead" addStyleNames="form-control"/>
+                    <b:InputGroupButton>
+                        <b:Button ui:field="querySymbolButton">Query by Gene Symbol</b:Button>
+                    </b:InputGroupButton>
+                </b:InputGroup>
+            </b:Column>
+            <b:Column size="MD_4">
+                <b:InputGroup>
+                    <typeahead:Typeahead ui:field="queryRefseqTypeahead" minLength="4" addStyleNames="form-control"/>
                     <b:InputGroupButton>
                         <b:Button ui:field="queryRefseqButton">Query by RefSeq ID</b:Button>
                     </b:InputGroupButton>
@@ -17,17 +26,9 @@
             </b:Column>
             <b:Column size="MD_4">
                 <b:InputGroup>
-                    <b:TextBox ui:field="queryMirNameTextBox">hsa-miR-1</b:TextBox>
+                    <typeahead:Typeahead ui:field="queryMirNameTypeahead" addStyleNames="form-control"/>
                     <b:InputGroupButton>
-                        <b:Button ui:field="queryMirNameButton">Query by MiR Name</b:Button>
-                    </b:InputGroupButton>
-                </b:InputGroup>
-            </b:Column>
-            <b:Column size="MD_4">
-                <b:InputGroup>
-                    <b:TextBox ui:field="querySymbolTextBox">TP53</b:TextBox>
-                    <b:InputGroupButton>
-                        <b:Button ui:field="querySymbolButton">Query by Gene Symbol</b:Button>
+                        <b:Button ui:field="queryMirNameButton">Query by Mir Name</b:Button>
                     </b:InputGroupButton>
                 </b:InputGroup>
             </b:Column>
@@ -44,6 +45,7 @@
                     <b:InlineRadio name="method-of-choice" ui:field="fMethodOfChoiceMirMark">MirMark</b:InlineRadio>
                     <b:InlineRadio name="method-of-choice" ui:field="fMethodOfChoiceTargetScan">TargetScan</b:InlineRadio>
                     <b:InlineRadio name="method-of-choice" ui:field="fMethodOfChoiceMiRanda">MiRanda</b:InlineRadio>
+                    <b:InlineRadio name="method-of-choice" ui:field="fMethodOfChoiceMirTarBase">MirTarBase</b:InlineRadio>
                 </g:FlowPanel>
             </b:Column>
             <b:Column size="MD_12">

@@ -1,5 +1,15 @@
-* {
-    transition-duration: 0.25s;
+.twitter-typeahead {
+    display: block !important; /* hack */
+    width: 100%;
+}
+
+.tt-dropdown-menu {
+    top: 35px !important; /* hack */
+}
+
+.tt-dropdown-menu {
+    max-height: 300px;
+    overflow: auto;
 }
 
 .input-group {

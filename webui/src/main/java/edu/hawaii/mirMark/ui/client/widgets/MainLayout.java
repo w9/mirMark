@@ -18,12 +18,16 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import edu.hawaii.mirMark.ui.client.MirMark;
 import org.gwtbootstrap3.client.ui.gwt.DataGrid;
 import org.gwtbootstrap3.extras.notify.client.constants.NotifyType;
+import org.gwtbootstrap3.extras.typeahead.client.base.StringDataset;
+import org.gwtbootstrap3.extras.typeahead.client.ui.Typeahead;
 
 import java.util.*;
 
 @SuppressWarnings("Convert2Lambda")
 public class MainLayout extends ViewImpl {
     private final NumberFormat decimalFormat = NumberFormat.getFormat("0.000");
+    @SuppressWarnings("FieldCanBeLocal")
+    private final TextColumn<UtrLevelResultEntry> mirTarBasePositiveCol;
     @SuppressWarnings("FieldCanBeLocal")
     private final TextColumn<UtrLevelResultEntry> miRandaScoreCol;
     @SuppressWarnings("FieldCanBeLocal")
@@ -45,17 +49,17 @@ public class MainLayout extends ViewImpl {
     // Note that _sUIBinder is a singleton.
     private static final MainLayoutUIBinder _sUIBinder = GWT.create(MainLayoutUIBinder.class);
 
-    @UiField TextBox queryRefseqTextBox;
     @UiField Button queryRefseqButton;
-    @UiField TextBox queryMirNameTextBox;
     @UiField Button queryMirNameButton;
     @UiField(provided = true) DataGrid<UtrLevelResultEntry> resultTable = new DataGrid<>(Integer.MAX_VALUE);
     @UiField TextBox fThreshold;
-    @UiField TextBox querySymbolTextBox;
     @UiField Button querySymbolButton;
     @UiField InlineRadio fMethodOfChoiceMirMark;
     @UiField InlineRadio fMethodOfChoiceTargetScan;
     @UiField InlineRadio fMethodOfChoiceMiRanda;
+    @UiField(provided = true) Typeahead<String> querySymbolTypeahead = new Typeahead<>(new StringDataset(new ArrayList<String>()));
+    @UiField(provided = true) Typeahead<String> queryRefseqTypeahead = new Typeahead<>(new StringDataset(new ArrayList<String>()));
+    @UiField(provided = true) Typeahead<String> queryMirNameTypeahead = new Typeahead<>(new StringDataset(new ArrayList<String>()));
 
     TextColumn<UtrLevelResultEntry> mirMarkProbCol;
 
@@ -110,7 +114,58 @@ public class MainLayout extends ViewImpl {
         }
     }
 
+
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Constructor
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     public MainLayout() {
+
+        MirMark.APP.getProjectActions().getSymbols(new AsyncCallback<String[]>() {
+            @Override
+            public void onFailure(Throwable caught) {
+                MyNotify.notify("Error Loading!", NotifyType.DANGER);
+            }
+
+            @Override
+            public void onSuccess(String[] result) {
+                querySymbolTypeahead.setDatasets(new StringDataset(Arrays.asList(result)));
+                querySymbolTypeahead.reconfigure();
+            }
+        });
+
+
+
+        MirMark.APP.getProjectActions().getRefseqs(new AsyncCallback<String[]>() {
+            @Override
+            public void onFailure(Throwable caught) {
+                MyNotify.notify("Error Loading!", NotifyType.DANGER);
+            }
+
+            @Override
+            public void onSuccess(String[] result) {
+                queryRefseqTypeahead.setDatasets(new StringDataset(Arrays.asList(result)));
+                queryRefseqTypeahead.reconfigure();
+            }
+        });
+
+
+
+        MirMark.APP.getProjectActions().getMirNames(new AsyncCallback<String[]>() {
+            @Override
+            public void onFailure(Throwable caught) {
+                MyNotify.notify("Error Loading!", NotifyType.DANGER);
+            }
+
+            @Override
+            public void onSuccess(String[] result) {
+                queryMirNameTypeahead.setDatasets(new StringDataset(Arrays.asList(result)));
+                queryMirNameTypeahead.reconfigure();
+            }
+        });
+
+
 
         // This is the widget---the puppet to be manipulated by this view.
         //
@@ -128,7 +183,6 @@ public class MainLayout extends ViewImpl {
         Container rootElement = _sUIBinder.createAndBindUi(this);
 
 
-
         // Here we can write some java-coded contents for the front-end---logic that needs to be
         // done before the displaying of the view.
         // ...
@@ -139,7 +193,6 @@ public class MainLayout extends ViewImpl {
         // between a widget and its user. To be more precise, it defines the logic and actions of the widget,
         // and provides handles to the user.
         initWidget(rootElement);
-
 
 
         refseqIdCol = new TextColumn<UtrLevelResultEntry>() {
@@ -158,7 +211,6 @@ public class MainLayout extends ViewImpl {
         resultTable.addColumn(refseqIdCol, "RefSeq ID");
 
 
-
         geneSymbolCol = new TextColumn<UtrLevelResultEntry>() {
             @Override
             public String getValue(UtrLevelResultEntry object) {
@@ -173,7 +225,6 @@ public class MainLayout extends ViewImpl {
             }
         });
         resultTable.addColumn(geneSymbolCol, "Gene Symbol");
-
 
 
         mirNameCol = new TextColumn<UtrLevelResultEntry>() {
@@ -192,7 +243,6 @@ public class MainLayout extends ViewImpl {
         resultTable.addColumn(mirNameCol, "MiR Name");
 
 
-
         resultTable.addColumnSortHandler(sortHandler);
         mirMarkProbCol = new TextColumn<UtrLevelResultEntry>() {
             @Override
@@ -207,8 +257,7 @@ public class MainLayout extends ViewImpl {
             }
         });
         mirMarkProbCol.setSortable(true);
-        resultTable.addColumn(mirMarkProbCol, "MirMark Probability");
-
+        resultTable.addColumn(mirMarkProbCol, "MirMark Prob.");
 
 
         targetScanProbCol = new TextColumn<UtrLevelResultEntry>() {
@@ -232,8 +281,7 @@ public class MainLayout extends ViewImpl {
                 return Float.compare(s1, s2);
             }
         });
-        resultTable.addColumn(targetScanProbCol, "TargetScan Probability");
-
+        resultTable.addColumn(targetScanProbCol, "TargetScan Prob.");
 
 
         miRandaScoreCol = new TextColumn<UtrLevelResultEntry>() {
@@ -259,10 +307,33 @@ public class MainLayout extends ViewImpl {
         miRandaScoreCol.setSortable(true);
         resultTable.addColumn(miRandaScoreCol, "MiRanda Score");
 
+
+        mirTarBasePositiveCol = new TextColumn<UtrLevelResultEntry>() {
+            @Override
+            public String getValue(UtrLevelResultEntry object) {
+                if (object.mirTarBasePositive > 0) {
+                    return "Found";
+                } else {
+                    return "-";
+                }
+            }
+        };
+        sortHandler.setComparator(mirTarBasePositiveCol, new Comparator<UtrLevelResultEntry>() {
+            @Override
+            public int compare(UtrLevelResultEntry o1, UtrLevelResultEntry o2) {
+                return Float.compare(o1.mirTarBasePositive, o2.mirTarBasePositive);
+            }
+        });
+        mirTarBasePositiveCol.setSortable(true);
+        resultTable.addColumn(mirTarBasePositiveCol, "MirTarBase");
+
+
         dataProvider.addDataDisplay(resultTable);
 
         // Select MirMark as the method of choice
         fMethodOfChoiceMirMark.setValue(true, true);
+
+
     }
 
     // GWT recognize that this event handler is for click event based on its type.
@@ -274,19 +345,19 @@ public class MainLayout extends ViewImpl {
         // "MirMark.APP" sends you to the "resource center"; "get..." usually just gets you the private variable,
         // thus if you put projectActions as a public static variable in MirMark class, you can get it by just
         // MirMark.projectActions, instead of this scary phrase.
-        MirMark.APP.getProjectActions().queryRefseqId(queryRefseqTextBox.getText(), fThreshold.getText(), methodOfChoice, new ResultTableCallback());
+        MirMark.APP.getProjectActions().queryRefseqId(queryRefseqTypeahead.getText(), fThreshold.getText(), methodOfChoice, new ResultTableCallback());
     }
 
     @SuppressWarnings({"unused"})
     @UiHandler({"queryMirNameButton"})
     void handleQueryMirNameClick(ClickEvent clickEvent) {
-        MirMark.APP.getProjectActions().queryMirName(queryMirNameTextBox.getText(), fThreshold.getText(), methodOfChoice, new ResultTableCallback());
+        MirMark.APP.getProjectActions().queryMirName(queryMirNameTypeahead.getText(), fThreshold.getText(), methodOfChoice, new ResultTableCallback());
     }
 
     @SuppressWarnings({"unused"})
     @UiHandler("querySymbolButton")
     public void handleQuerySymbolClick(ClickEvent event) {
-        MirMark.APP.getProjectActions().querySymbol(querySymbolTextBox.getText(), fThreshold.getText(), methodOfChoice, new ResultTableCallback());
+        MirMark.APP.getProjectActions().querySymbol(querySymbolTypeahead.getText(), fThreshold.getText(), methodOfChoice, new ResultTableCallback());
     }
 
     @UiHandler("fMethodOfChoiceMirMark")
@@ -305,6 +376,12 @@ public class MainLayout extends ViewImpl {
     public void handleMethodOfChoiceMiRandaValueChange(@SuppressWarnings("UnusedParameters") ValueChangeEvent<Boolean> event) {
         fThreshold.setText("-999");
         methodOfChoice = ProjectActionsImpl.Methods.MIRANDA;
+    }
+
+    @UiHandler("fMethodOfChoiceMirTarBase")
+    public void handleMethodOfChoiceMirTarBaseValueChange(@SuppressWarnings("UnusedParameters") ValueChangeEvent<Boolean> event) {
+        fThreshold.setText("0.5");
+        methodOfChoice = ProjectActionsImpl.Methods.MIRTARBASE;
     }
 
     private class ResultTableCallback implements AsyncCallback<ArrayList<UtrLevelResultEntry>> {

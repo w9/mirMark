@@ -13,4 +13,10 @@ public interface ProjectActions extends RemoteService {
     ArrayList<UtrLevelResultEntry> queryMirName(String mirSelectText, String threshold, String methodOfChoice);
 
     ArrayList<UtrLevelResultEntry> querySymbol(String query, String threshold, String methodOfChoice);
+
+    String[] getSymbols();
+
+    String[] getRefseqs();
+
+    String[] getMirNames();
 }

@@ -17,6 +17,8 @@ public class ProjectActionsImpl extends RemoteServiceServlet implements ProjectA
                 return Results.targetScanProbs;
             case Methods.MIRANDA:
                 return Results.miRandaScores;
+            case Methods.MIRTARBASE:
+                return Results.mirTarBasePositives;
             default:
                 return Results.mirMarkProbs;
         }
@@ -26,6 +28,7 @@ public class ProjectActionsImpl extends RemoteServiceServlet implements ProjectA
         public static final String MIR_MARK = "mirMark";
         public static final String TARGET_SCAN = "targetScan";
         public static final String MIRANDA = "miRanda";
+        public static final String MIRTARBASE = "mirTarBase";
     }
 
     @Override
@@ -46,7 +49,8 @@ public class ProjectActionsImpl extends RemoteServiceServlet implements ProjectA
                         p,
                         Results.mirMarkProbs[Results.mirs.get(p)][index],
                         Results.targetScanProbs[Results.mirs.get(p)][index],
-                        Results.miRandaScores[Results.mirs.get(p)][index]
+                        Results.miRandaScores[Results.mirs.get(p)][index],
+                        Results.mirTarBasePositives[Results.mirs.get(p)][index]
                 ));
             }
         });
@@ -72,7 +76,8 @@ public class ProjectActionsImpl extends RemoteServiceServlet implements ProjectA
                         mirName,
                         Results.mirMarkProbs[index][Results.utrs.get(p)],
                         Results.targetScanProbs[index][Results.utrs.get(p)],
-                        Results.miRandaScores[index][Results.utrs.get(p)]
+                        Results.miRandaScores[index][Results.utrs.get(p)],
+                        Results.mirTarBasePositives[index][Results.utrs.get(p)]
                 ));
             }
         });
@@ -94,6 +99,21 @@ public class ProjectActionsImpl extends RemoteServiceServlet implements ProjectA
             }
             return resultTable;
         }
+    }
+
+    @Override
+    public String[] getSymbols() {
+        return Results.symbol2Refseq.keySet().toArray(new String[Results.symbol2Refseq.keySet().size()]);
+    }
+
+    @Override
+    public String[] getRefseqs() {
+        return Results.utrs.keySet().toArray(new String[Results.utrs.keySet().size()]);
+    }
+
+    @Override
+    public String[] getMirNames() {
+        return Results.mirs.keySet().toArray(new String[Results.mirs.keySet().size()]);
     }
 }
 
