@@ -1,8 +1,11 @@
 package edu.hawaii.mirMark.ui.client.widgets;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.AnchorElement;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
+import com.google.gwt.http.client.URL;
 import com.google.gwt.i18n.client.NumberFormat;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -17,6 +20,7 @@ import org.gwtbootstrap3.client.ui.*;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import edu.hawaii.mirMark.ui.client.MirMark;
 import org.gwtbootstrap3.client.ui.gwt.DataGrid;
+import org.gwtbootstrap3.client.ui.html.Div;
 import org.gwtbootstrap3.extras.notify.client.constants.NotifyType;
 import org.gwtbootstrap3.extras.typeahead.client.base.StringDataset;
 import org.gwtbootstrap3.extras.typeahead.client.ui.Typeahead;
@@ -39,6 +43,7 @@ public class MainLayout extends ViewImpl {
     @SuppressWarnings("FieldCanBeLocal")
     private final TextColumn<UtrLevelResultEntry> refseqIdCol;
     private String methodOfChoice;
+    private ArrayList<UtrLevelResultEntry> currentResult;
 
     // It seems to me that GWT can infer the name of the *.ui.xml file by the class name (in this case MainLayout)
     interface MainLayoutUIBinder extends UiBinder<Container, MainLayout> {}
@@ -57,9 +62,17 @@ public class MainLayout extends ViewImpl {
     @UiField InlineRadio fMethodOfChoiceMirMark;
     @UiField InlineRadio fMethodOfChoiceTargetScan;
     @UiField InlineRadio fMethodOfChoiceMiRanda;
+    @SuppressWarnings("Convert2Diamond")
     @UiField(provided = true) Typeahead<String> querySymbolTypeahead = new Typeahead<>(new StringDataset(new ArrayList<String>()));
+    @SuppressWarnings("Convert2Diamond")
     @UiField(provided = true) Typeahead<String> queryRefseqTypeahead = new Typeahead<>(new StringDataset(new ArrayList<String>()));
+    @SuppressWarnings("Convert2Diamond")
     @UiField(provided = true) Typeahead<String> queryMirNameTypeahead = new Typeahead<>(new StringDataset(new ArrayList<String>()));
+    @UiField Div siteLevelCanvas;
+    @UiField AnchorElement fDownloadCSVLink;
+    @UiField TextBox fFilenameTextBox;
+
+    SiteLevelIllustration siteLevelIllustration = null;
 
     TextColumn<UtrLevelResultEntry> mirMarkProbCol;
 
@@ -117,7 +130,7 @@ public class MainLayout extends ViewImpl {
 
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // Constructor
+    // Constructor Begins
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public MainLayout() {
@@ -259,7 +272,6 @@ public class MainLayout extends ViewImpl {
         mirMarkProbCol.setSortable(true);
         resultTable.addColumn(mirMarkProbCol, "MirMark Prob.");
 
-
         targetScanProbCol = new TextColumn<UtrLevelResultEntry>() {
             @Override
             public String getValue(UtrLevelResultEntry object) {
@@ -333,8 +345,25 @@ public class MainLayout extends ViewImpl {
         // Select MirMark as the method of choice
         fMethodOfChoiceMirMark.setValue(true, true);
 
+        siteLevelIllustration = new SiteLevelIllustration(siteLevelCanvas);
+        siteLevelIllustration.redrawTheSite(14030, 14270, 14110, 14130);
 
+        siteLevelCanvas.addHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                siteLevelIllustration.hide();
+            }
+        }, ClickEvent.getType());
     }
+
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Constructor Ends
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
 
     // GWT recognize that this event handler is for click event based on its type.
     // GWT separated events into many types like KeyDownEvent, MouseOutEvent, etc.r
@@ -362,7 +391,7 @@ public class MainLayout extends ViewImpl {
 
     @UiHandler("fMethodOfChoiceMirMark")
     public void handleMethodOfChoiceMirMarkValueChange(@SuppressWarnings("UnusedParameters") ValueChangeEvent<Boolean> event) {
-        fThreshold.setText("0.99");
+        fThreshold.setText("1");
         methodOfChoice = ProjectActionsImpl.Methods.MIR_MARK;
     }
 
@@ -384,7 +413,13 @@ public class MainLayout extends ViewImpl {
         methodOfChoice = ProjectActionsImpl.Methods.MIRTARBASE;
     }
 
+    @UiHandler("fFilenameTextBox")
+    public void handleFilenameTextBoxValueChange(@SuppressWarnings("UnusedParameters") ValueChangeEvent<String> event) {
+        fDownloadCSVLink.setAttribute("download", fFilenameTextBox.getValue());
+    }
+
     private class ResultTableCallback implements AsyncCallback<ArrayList<UtrLevelResultEntry>> {
+
         @Override
         public void onFailure(Throwable caught) {
             MyNotify.notify("Error Loading.", NotifyType.WARNING);
@@ -392,6 +427,7 @@ public class MainLayout extends ViewImpl {
 
         @Override
         public void onSuccess(ArrayList<UtrLevelResultEntry> result) {
+            MainLayout.this.currentResult = result;
             if(result == null) {
                 dataProvider.getList().clear();
                 dataProvider.flush();
@@ -406,6 +442,20 @@ public class MainLayout extends ViewImpl {
                 sortHandler.sortColumn(mirMarkProbCol, false);
                 MyNotify.notify("Returned: " + result.size(), NotifyType.SUCCESS);
             }
+
+
+
+            String encodedCSVTable = "";
+            for (UtrLevelResultEntry entry : currentResult) {
+                encodedCSVTable += refseqIdCol.getValue(entry) + "," +
+                        geneSymbolCol.getValue(entry) + "," +
+                        mirNameCol.getValue(entry) + "," +
+                        mirMarkProbCol.getValue(entry) + "," +
+                        targetScanProbCol.getValue(entry) + "," +
+                        miRandaScoreCol.getValue(entry) + "," +
+                        mirTarBasePositiveCol.getValue(entry) + "\n";
+            }
+            fDownloadCSVLink.setHref(URL.encode("data:text/csv;charset=utf-8," + encodedCSVTable));
         }
     }
 }

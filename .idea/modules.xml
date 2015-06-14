@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/mirMark.iml" filepath="$PROJECT_DIR$/mirMark.iml" />
+      <module fileurl="file://$PROJECT_DIR$/parent/mirMark-parent.iml" filepath="$PROJECT_DIR$/parent/mirMark-parent.iml" />
       <module fileurl="file://$PROJECT_DIR$/webui/webui.iml" filepath="$PROJECT_DIR$/webui/webui.iml" />
     </modules>
   </component>

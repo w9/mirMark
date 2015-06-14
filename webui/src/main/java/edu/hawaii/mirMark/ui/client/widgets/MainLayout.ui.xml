@@ -8,6 +8,11 @@
              xmlns:typeahead="urn:import:org.gwtbootstrap3.extras.typeahead.client.ui">
     <b:Container>
         <b:Row>
+            <g:HTMLPanel>
+                <h1 class="mirmark-title" style="color: #8BC34A">Mir<b style="color: #009688">Mark</b></h1>
+            </g:HTMLPanel>
+        </b:Row>
+        <b:Row>
             <b:Column size="MD_4">
                 <b:InputGroup>
                     <typeahead:Typeahead ui:field="querySymbolTypeahead" addStyleNames="form-control"/>
@@ -37,10 +42,10 @@
                     <b:InputGroupAddon>
                         Threshold
                     </b:InputGroupAddon>
-                    <b:TextBox ui:field="fThreshold">0.99</b:TextBox>
+                    <b:TextBox ui:field="fThreshold">1</b:TextBox>
                 </b:InputGroup>
             </b:Column>
-            <b:Column size="MD_8">
+            <b:Column size="MD_6">
                 <g:FlowPanel>
                     <b:InlineRadio name="method-of-choice" ui:field="fMethodOfChoiceMirMark">MirMark</b:InlineRadio>
                     <b:InlineRadio name="method-of-choice" ui:field="fMethodOfChoiceTargetScan">TargetScan</b:InlineRadio>
@@ -48,10 +53,37 @@
                     <b:InlineRadio name="method-of-choice" ui:field="fMethodOfChoiceMirTarBase">MirTarBase</b:InlineRadio>
                 </g:FlowPanel>
             </b:Column>
+        </b:Row>
+
+        <b:Row>
+            <b:Column size="MD_12">
+                <b.html:Div ui:field="siteLevelCanvas" width="100%"/>
+            </b:Column>
             <b:Column size="MD_12">
                 <b.gwt:DataGrid ui:field="resultTable" bordered="true" condensed="true" striped="true"
-                                hover="true" height="800px" width="100%"/>
+                                hover="true" height="680px" width="100%"/>
             </b:Column>
         </b:Row>
+
+        <b:Row>
+            <b:Column size="MD_4">
+                <b:InputGroup>
+                    <b:InputGroupAddon>
+                        File Name
+                    </b:InputGroupAddon>
+                    <b:TextBox ui:field="fFilenameTextBox">result.csv</b:TextBox>
+                </b:InputGroup>
+            </b:Column>
+            <b:Column size="MD_4">
+                <g:HTMLPanel>
+                    <a download="result.csv" href="" class="btn btn-default" ui:field="fDownloadCSVLink">Download CSV</a>
+                </g:HTMLPanel>
+            </b:Column>
+        </b:Row>
+
+        <g:HTMLPanel>
+            <p style="float: left">Reference: <a class="foot-note" href="http://www.genomebiology.com/2014/15/10/500">mirMark: a site-level and UTR-level classifier for miRNA target prediction</a></p>
+            <p style="float: right">Source Code: <a class="foot-note" href="https://github.com/lanagarmire/MirMark">Github Link</a></p>
+        </g:HTMLPanel>
     </b:Container>
 </ui:UiBinder>
