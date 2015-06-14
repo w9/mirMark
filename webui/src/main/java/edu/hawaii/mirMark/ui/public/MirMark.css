@@ -14,7 +14,8 @@
     overflow: auto;
 }
 
-.col-md-4 {
+.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6,
+.col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
     margin: 10px 0;
 }
 
@@ -25,4 +26,19 @@
 
 .foot-note {
     font-size: 13px;
+}
+
+.site-level-canvas {
+}
+
+.site-level-panel {
+    overflow: hidden;
+    padding: 10px 0 10px 0;
+    width: 100%;
+    display: block;
+}
+
+.site-level-panel.hidden {
+    transition: height 0.25s;
+    display: none;
 }

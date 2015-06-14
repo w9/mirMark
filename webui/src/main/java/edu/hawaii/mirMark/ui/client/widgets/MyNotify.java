@@ -22,4 +22,8 @@ public class MyNotify {
 
         Notify.notify(msg, notifySettings);
     }
+
+    public static void notify(String msg) {
+        notify(msg, NotifyType.INFO);
+    }
 }

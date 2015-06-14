@@ -1,6 +1,7 @@
 package edu.hawaii.mirMark.ui.client.actions;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import edu.hawaii.mirMark.ui.shared.SiteLevelResultEntry;
 import edu.hawaii.mirMark.ui.shared.UtrLevelResultEntry;
 
 import java.util.ArrayList;
@@ -17,4 +18,6 @@ public interface ProjectActionsAsync {
     void getRefseqs(AsyncCallback<String[]> asyncCallback);
 
     void getMirNames(AsyncCallback<String[]> asyncCallback);
+
+    void querySiteLevel(String utrRefSeq, String threshold, AsyncCallback<ArrayList<SiteLevelResultEntry>> asyncCallback);
 }

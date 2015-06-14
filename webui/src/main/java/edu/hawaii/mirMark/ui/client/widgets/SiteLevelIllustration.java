@@ -6,16 +6,22 @@ import com.github.gwtd3.api.core.Selection;
 import com.github.gwtd3.api.scales.LinearScale;
 import com.github.gwtd3.api.svg.Axis;
 import com.google.gwt.user.client.ui.Widget;
+import org.gwtbootstrap3.extras.notify.client.constants.NotifyType;
+
+import java.util.Random;
 
 /**
  * Created by xzhu on 6/5/15.
  */
 public class SiteLevelIllustration {
     private static final int MARGIN = 100;
-    private static final int BLOCK_HEIGHT = 20;
+    private static final int BLOCK_HEIGHT = 4;
     private static final int CANVAS_HEIGHT = 80;
     private static final int AXIS_Y_OFFSET = 30;
     private static final int BLOCK_Y_OFFSET = 1;
+    private final int utrStart;
+    private final int utrEnd;
+    private Random random = new Random();
 
     private Selection siteBlock = null;
     private LinearScale genomeScale = null;
@@ -25,19 +31,15 @@ public class SiteLevelIllustration {
     private final Selection canvas;
 
     // rootWidget is the widget it binds itself to
-    public SiteLevelIllustration(Widget rootWidget) {
+    public SiteLevelIllustration(Widget rootWidget, int utrStart, int utrEnd, String chr) {
+        this.utrStart = utrStart;
+        this.utrEnd = utrEnd;
 
         canvas = D3.select(rootWidget)
                 .append("svg:svg")
                 .classed("site-level-illustration", true)
-                .attr("height", 0)
+                .attr("height", 80)
                 .attr("width", "100%");
-    }
-
-    public void redrawTheSite(int utrStart, int utrEnd, int siteStart, int siteEnd) {
-        if (siteStart < utrStart || siteEnd > utrEnd) {
-            System.err.println("Cannot draw the site: The start and end are out of domain.");
-        }
 
         genomeScale = D3.scale.linear().domain(utrStart, utrEnd).range(MARGIN, 1140 - MARGIN);
 
@@ -48,25 +50,27 @@ public class SiteLevelIllustration {
                 .attr("transform", "translate(0," + Integer.toString(CANVAS_HEIGHT - AXIS_Y_OFFSET) + ")")
                 .call(genomeAxis);
 
-        if (siteBlock != null) siteBlock.remove();
+        canvas.append("svg:text")
+                .text(chr)
+                .attr("x", MARGIN / 2)
+                .attr("y", CANVAS_HEIGHT / 2);
+    }
+
+    public void drawSite(String mirName, int relativeStart, int relativeEnd, float probability) {
+        int siteStart = relativeStart + utrStart;
+        int siteEnd = relativeEnd + utrStart;
+
+        if (siteEnd > utrEnd) {
+            MyNotify.notify("Cannot draw the site: The end is out of domain.", NotifyType.DANGER);
+            return;
+        }
+
         siteBlock = canvas.append("svg:rect")
-                .attr("y", CANVAS_HEIGHT - AXIS_Y_OFFSET - BLOCK_Y_OFFSET - BLOCK_HEIGHT)
+                .attr("y", CANVAS_HEIGHT - AXIS_Y_OFFSET - BLOCK_Y_OFFSET - BLOCK_HEIGHT - random.nextDouble() * 16)
                 .attr("height", BLOCK_HEIGHT)
                 .attr("x", genomeScale.apply(siteStart).asString())
                 .attr("width", Double.toString(genomeScale.apply(siteEnd).asDouble() - genomeScale.apply(siteStart).asDouble()))
-                .style("fill", "#F44336");
-    }
-
-    private void createSiteBlock() {
-    }
-
-    // fold itself using an animation
-    public void hide() {
-        canvas.attr("height", 0);
-    }
-
-    // show itself using an animation
-    public void show() {
-        canvas.attr("height", CANVAS_HEIGHT);
+                .style("fill", "#591613")
+                .style("fill-opacityk", "0.3");
     }
 }

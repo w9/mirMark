@@ -1,24 +1,31 @@
 package edu.hawaii.mirMark.ui.client.widgets;
 
+import com.google.gwt.cell.client.FieldUpdater;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.AnchorElement;
 import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.http.client.URL;
 import com.google.gwt.i18n.client.NumberFormat;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.cellview.client.*;
 import com.google.gwt.user.cellview.client.Column;
+import com.google.gwt.user.cellview.client.ColumnSortEvent;
+import com.google.gwt.user.cellview.client.TextColumn;
+import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.view.client.ListDataProvider;
 import com.gwtplatform.mvp.client.ViewImpl;
-import edu.hawaii.mirMark.ui.server.actions.ProjectActionsImpl;
-import edu.hawaii.mirMark.ui.shared.UtrLevelResultEntry;
-import org.gwtbootstrap3.client.ui.*;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import edu.hawaii.mirMark.ui.client.MirMark;
+import edu.hawaii.mirMark.ui.server.actions.ProjectActionsImpl;
+import edu.hawaii.mirMark.ui.shared.SiteLevelResultEntry;
+import edu.hawaii.mirMark.ui.shared.UtrLevelResultEntry;
+import org.gwtbootstrap3.client.ui.Button;
+import org.gwtbootstrap3.client.ui.Container;
+import org.gwtbootstrap3.client.ui.InlineRadio;
+import org.gwtbootstrap3.client.ui.TextBox;
+import org.gwtbootstrap3.client.ui.gwt.ButtonCell;
 import org.gwtbootstrap3.client.ui.gwt.DataGrid;
 import org.gwtbootstrap3.client.ui.html.Div;
 import org.gwtbootstrap3.extras.notify.client.constants.NotifyType;
@@ -30,18 +37,12 @@ import java.util.*;
 @SuppressWarnings("Convert2Lambda")
 public class MainLayout extends ViewImpl {
     private final NumberFormat decimalFormat = NumberFormat.getFormat("0.000");
-    @SuppressWarnings("FieldCanBeLocal")
-    private final TextColumn<UtrLevelResultEntry> mirTarBasePositiveCol;
-    @SuppressWarnings("FieldCanBeLocal")
-    private final TextColumn<UtrLevelResultEntry> miRandaScoreCol;
-    @SuppressWarnings("FieldCanBeLocal")
-    private final TextColumn<UtrLevelResultEntry> targetScanProbCol;
-    @SuppressWarnings("FieldCanBeLocal")
-    private final TextColumn<UtrLevelResultEntry> mirNameCol;
-    @SuppressWarnings("FieldCanBeLocal")
-    private final TextColumn<UtrLevelResultEntry> geneSymbolCol;
-    @SuppressWarnings("FieldCanBeLocal")
-    private final TextColumn<UtrLevelResultEntry> refseqIdCol;
+    @SuppressWarnings("FieldCanBeLocal") private final TextColumn<UtrLevelResultEntry> mirTarBasePositiveCol;
+    @SuppressWarnings("FieldCanBeLocal") private final TextColumn<UtrLevelResultEntry> miRandaScoreCol;
+    @SuppressWarnings("FieldCanBeLocal") private final TextColumn<UtrLevelResultEntry> targetScanProbCol;
+    @SuppressWarnings("FieldCanBeLocal") private final TextColumn<UtrLevelResultEntry> mirNameCol;
+    @SuppressWarnings("FieldCanBeLocal") private final TextColumn<UtrLevelResultEntry> geneSymbolCol;
+    @SuppressWarnings("FieldCanBeLocal") private final Column<UtrLevelResultEntry, String> refseqIdCol;
     private String methodOfChoice;
     private ArrayList<UtrLevelResultEntry> currentResult;
 
@@ -62,15 +63,15 @@ public class MainLayout extends ViewImpl {
     @UiField InlineRadio fMethodOfChoiceMirMark;
     @UiField InlineRadio fMethodOfChoiceTargetScan;
     @UiField InlineRadio fMethodOfChoiceMiRanda;
-    @SuppressWarnings("Convert2Diamond")
-    @UiField(provided = true) Typeahead<String> querySymbolTypeahead = new Typeahead<>(new StringDataset(new ArrayList<String>()));
-    @SuppressWarnings("Convert2Diamond")
-    @UiField(provided = true) Typeahead<String> queryRefseqTypeahead = new Typeahead<>(new StringDataset(new ArrayList<String>()));
-    @SuppressWarnings("Convert2Diamond")
-    @UiField(provided = true) Typeahead<String> queryMirNameTypeahead = new Typeahead<>(new StringDataset(new ArrayList<String>()));
-    @UiField Div siteLevelCanvas;
+    @SuppressWarnings("Convert2Diamond") @UiField(provided = true) Typeahead<String> querySymbolTypeahead = new Typeahead<>(new StringDataset(new ArrayList<String>()));
+    @SuppressWarnings("Convert2Diamond") @UiField(provided = true) Typeahead<String> queryRefseqTypeahead = new Typeahead<>(new StringDataset(new ArrayList<String>()));
+    @SuppressWarnings("Convert2Diamond") @UiField(provided = true) Typeahead<String> queryMirNameTypeahead = new Typeahead<>(new StringDataset(new ArrayList<String>()));
+    @UiField HTMLPanel fSiteLevelCanvas;
     @UiField AnchorElement fDownloadCSVLink;
     @UiField TextBox fFilenameTextBox;
+    @UiField Button fHideSiteLevelCanvasButton;
+    @UiField Div fSiteLevelPanel;
+    @UiField TextBox fSiteLevelThreshold;
 
     SiteLevelIllustration siteLevelIllustration = null;
 
@@ -208,12 +209,35 @@ public class MainLayout extends ViewImpl {
         initWidget(rootElement);
 
 
-        refseqIdCol = new TextColumn<UtrLevelResultEntry>() {
+//        refseqIdCol = new TextColumn<UtrLevelResultEntry>() {
+//            @Override
+//            public String getValue(UtrLevelResultEntry object) {
+//                return object.geneRefseqId;
+//            }
+//        };
+        refseqIdCol = new Column<UtrLevelResultEntry, String>(new ButtonCell()) {
             @Override
             public String getValue(UtrLevelResultEntry object) {
                 return object.geneRefseqId;
             }
         };
+        refseqIdCol.setFieldUpdater(new FieldUpdater<UtrLevelResultEntry, String>() {
+            @Override
+            public void update(int index, UtrLevelResultEntry object, String value) {
+                MirMark.APP.getProjectActions().querySiteLevel(value, fSiteLevelThreshold.getText(), new AsyncCallback<ArrayList<SiteLevelResultEntry>>() {
+                    @Override
+                    public void onFailure(Throwable caught) {
+                        MyNotify.notify("Site Level: Error Loading!", NotifyType.DANGER);
+                    }
+
+                    @Override
+                    public void onSuccess(ArrayList<SiteLevelResultEntry> result) {
+                        drawSiteLevelResults(result);
+                        MainLayout.this.fSiteLevelPanel.removeStyleName("hidden");
+                    }
+                });
+            }
+        });
         refseqIdCol.setSortable(true);
         sortHandler.setComparator(refseqIdCol, new Comparator<UtrLevelResultEntry>() {
             @Override
@@ -344,16 +368,6 @@ public class MainLayout extends ViewImpl {
 
         // Select MirMark as the method of choice
         fMethodOfChoiceMirMark.setValue(true, true);
-
-        siteLevelIllustration = new SiteLevelIllustration(siteLevelCanvas);
-        siteLevelIllustration.redrawTheSite(14030, 14270, 14110, 14130);
-
-        siteLevelCanvas.addHandler(new ClickHandler() {
-            @Override
-            public void onClick(ClickEvent event) {
-                siteLevelIllustration.hide();
-            }
-        }, ClickEvent.getType());
     }
 
 
@@ -362,7 +376,18 @@ public class MainLayout extends ViewImpl {
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-
+    void drawSiteLevelResults(ArrayList<SiteLevelResultEntry> entries) {
+        fSiteLevelCanvas.clear();
+        fSiteLevelCanvas.getElement().setInnerHTML("");
+        MyNotify.notify("entries.size() = " + entries.size());
+        for (SiteLevelResultEntry entry : entries) {
+            siteLevelIllustration = new SiteLevelIllustration(fSiteLevelCanvas, entry.start, entry.end, entry.chr);
+            MyNotify.notify("entry.sites.size() = " + entry.sites.size());
+            for (SiteLevelResultEntry.Site site : entry.sites) {
+                siteLevelIllustration.drawSite(site.mirName, site.start, site.end, site.probability);
+            }
+        }
+    }
 
 
     // GWT recognize that this event handler is for click event based on its type.
@@ -416,6 +441,11 @@ public class MainLayout extends ViewImpl {
     @UiHandler("fFilenameTextBox")
     public void handleFilenameTextBoxValueChange(@SuppressWarnings("UnusedParameters") ValueChangeEvent<String> event) {
         fDownloadCSVLink.setAttribute("download", fFilenameTextBox.getValue());
+    }
+
+    @UiHandler("fHideSiteLevelCanvasButton")
+    public void handleHideSiteLevelCanvasButtonClick(@SuppressWarnings("UnusedParameters") ClickEvent event) {
+        fSiteLevelPanel.addStyleName("hidden");
     }
 
     private class ResultTableCallback implements AsyncCallback<ArrayList<UtrLevelResultEntry>> {

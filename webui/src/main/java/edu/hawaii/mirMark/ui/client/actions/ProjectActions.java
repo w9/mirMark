@@ -2,6 +2,7 @@ package edu.hawaii.mirMark.ui.client.actions;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
+import edu.hawaii.mirMark.ui.shared.SiteLevelResultEntry;
 import edu.hawaii.mirMark.ui.shared.UtrLevelResultEntry;
 
 import java.util.ArrayList;
@@ -19,4 +20,6 @@ public interface ProjectActions extends RemoteService {
     String[] getRefseqs();
 
     String[] getMirNames();
+
+    ArrayList<SiteLevelResultEntry> querySiteLevel(String utrRefSeq, String threshold);
 }

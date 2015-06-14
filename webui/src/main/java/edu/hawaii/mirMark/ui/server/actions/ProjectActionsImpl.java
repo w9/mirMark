@@ -1,11 +1,18 @@
 package edu.hawaii.mirMark.ui.server.actions;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 import edu.hawaii.mirMark.ui.client.actions.ProjectActions;
 import edu.hawaii.mirMark.ui.server.Results;
+import edu.hawaii.mirMark.ui.shared.SiteLevelResultEntry;
 import edu.hawaii.mirMark.ui.shared.UtrLevelResultEntry;
+import org.bson.Document;
 
-import java.util.*;
+import java.util.ArrayList;
+
+import static com.mongodb.client.model.Filters.*;
 
 
 public class ProjectActionsImpl extends RemoteServiceServlet implements ProjectActions {
@@ -114,6 +121,48 @@ public class ProjectActionsImpl extends RemoteServiceServlet implements ProjectA
     @Override
     public String[] getMirNames() {
         return Results.mirs.keySet().toArray(new String[Results.mirs.keySet().size()]);
+    }
+
+    @Override
+    public ArrayList<SiteLevelResultEntry> querySiteLevel(String utrRefSeq, String threshold) {
+//        ArrayList<SiteLevelResultEntry> entries = new ArrayList<>();
+//        ArrayList<SiteLevelResultEntry.Site> sites = new ArrayList<>();
+//        sites.add(new SiteLevelResultEntry.Site("hsa-miR-HELLO", 13, 54, (float) 0.44));
+//        entries.add(new SiteLevelResultEntry(500, 1000, sites));
+
+
+        MongoClient mongoClient = new MongoClient("127.0.0.1");
+        MongoDatabase mirmarkDB = mongoClient.getDatabase("mirmark");
+        MongoCollection<Document> sitesColl = mirmarkDB.getCollection("sites");
+        MongoCollection<Document> utrsColl = mirmarkDB.getCollection("utrs");
+
+        ArrayList<Document> utrDocuments = utrsColl.find(new Document("refseq", utrRefSeq)).into(new ArrayList<>());
+
+        System.out.println("utrDocuments.size() = " + utrDocuments.size());
+
+        ArrayList<SiteLevelResultEntry> entries = new ArrayList<>();
+        
+        for (Document utrDocument : utrDocuments) {
+            int utrId = (int) utrDocument.get("_id");
+            ArrayList<Document> siteDocuments = sitesColl.find(and(eq("utr_id", utrId), gte("probability", Double.parseDouble(threshold)))).into(new ArrayList<>());
+            System.out.println("siteDocuments.size() = " + siteDocuments.size());
+
+            ArrayList<SiteLevelResultEntry.Site> sites = new ArrayList<>();
+            for (Document siteDocument : siteDocuments) {
+                SiteLevelResultEntry.Site site = new SiteLevelResultEntry.Site(
+                        Integer.toString((int) siteDocument.get("mir_id")),
+                        (int) siteDocument.get("start"),
+                        (int) siteDocument.get("end"),
+                        (float) (double) siteDocument.get("probability"));
+                sites.add(site);
+            }
+
+            SiteLevelResultEntry entry = new SiteLevelResultEntry((String) utrDocument.get("chr"), (int) utrDocument.get("start"), (int) utrDocument.get("end"), sites);
+            entries.add(entry);
+        }
+
+
+        return entries;
     }
 }
 

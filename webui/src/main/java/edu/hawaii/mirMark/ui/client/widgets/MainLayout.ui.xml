@@ -37,12 +37,20 @@
                     </b:InputGroupButton>
                 </b:InputGroup>
             </b:Column>
-            <b:Column size="MD_4">
+            <b:Column size="MD_3">
                 <b:InputGroup>
                     <b:InputGroupAddon>
                         Threshold
                     </b:InputGroupAddon>
                     <b:TextBox ui:field="fThreshold">1</b:TextBox>
+                </b:InputGroup>
+            </b:Column>
+            <b:Column size="MD_3">
+                <b:InputGroup>
+                    <b:InputGroupAddon>
+                        Site Level Threshold
+                    </b:InputGroupAddon>
+                    <b:TextBox ui:field="fSiteLevelThreshold">0.99</b:TextBox>
                 </b:InputGroup>
             </b:Column>
             <b:Column size="MD_6">
@@ -56,9 +64,13 @@
         </b:Row>
 
         <b:Row>
-            <b:Column size="MD_12">
-                <b.html:Div ui:field="siteLevelCanvas" width="100%"/>
+            <b:Column size="MD_12" ui:field="fSiteLevelPanel" addStyleNames="site-level-panel hidden">
+                <g:HTMLPanel ui:field="fSiteLevelCanvas" addStyleNames="site-level-canvas"></g:HTMLPanel>
+                <b:Button ui:field="fHideSiteLevelCanvasButton">Hide</b:Button>
             </b:Column>
+        </b:Row>
+
+        <b:Row>
             <b:Column size="MD_12">
                 <b.gwt:DataGrid ui:field="resultTable" bordered="true" condensed="true" striped="true"
                                 hover="true" height="680px" width="100%"/>
