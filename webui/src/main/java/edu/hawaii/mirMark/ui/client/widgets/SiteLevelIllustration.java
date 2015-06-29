@@ -1,10 +1,10 @@
 package edu.hawaii.mirMark.ui.client.widgets;
 
-import com.github.gwtd3.api.Colors;
 import com.github.gwtd3.api.D3;
 import com.github.gwtd3.api.core.Selection;
 import com.github.gwtd3.api.scales.LinearScale;
 import com.github.gwtd3.api.svg.Axis;
+import com.google.gwt.i18n.client.NumberFormat;
 import com.google.gwt.user.client.ui.Widget;
 import org.gwtbootstrap3.extras.notify.client.constants.NotifyType;
 
@@ -29,6 +29,8 @@ public class SiteLevelIllustration {
     private Selection genomeAxisG;
 
     private final Selection canvas;
+
+    NumberFormat formatter = NumberFormat.getFormat("0.00");
 
     // rootWidget is the widget it binds itself to
     public SiteLevelIllustration(Widget rootWidget, int utrStart, int utrEnd, String chr) {
@@ -71,6 +73,9 @@ public class SiteLevelIllustration {
                 .attr("x", genomeScale.apply(siteStart).asString())
                 .attr("width", Double.toString(genomeScale.apply(siteEnd).asDouble() - genomeScale.apply(siteStart).asDouble()))
                 .style("fill", "#591613")
-                .style("fill-opacityk", "0.3");
+                .style("fill-opacity", "0.3");
+
+        siteBlock.append("title")
+                .text("miR Name = " + mirName + "; Probability = " + formatter.format(probability));
     }
 }

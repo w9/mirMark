@@ -135,6 +135,7 @@ public class ProjectActionsImpl extends RemoteServiceServlet implements ProjectA
         MongoDatabase mirmarkDB = mongoClient.getDatabase("mirmark");
         MongoCollection<Document> sitesColl = mirmarkDB.getCollection("sites");
         MongoCollection<Document> utrsColl = mirmarkDB.getCollection("utrs");
+        MongoCollection<Document> mirsColl = mirmarkDB.getCollection("mirs");
 
         ArrayList<Document> utrDocuments = utrsColl.find(new Document("refseq", utrRefSeq)).into(new ArrayList<>());
 
@@ -150,7 +151,7 @@ public class ProjectActionsImpl extends RemoteServiceServlet implements ProjectA
             ArrayList<SiteLevelResultEntry.Site> sites = new ArrayList<>();
             for (Document siteDocument : siteDocuments) {
                 SiteLevelResultEntry.Site site = new SiteLevelResultEntry.Site(
-                        Integer.toString((int) siteDocument.get("mir_id")),
+                        (String) mirsColl.find(eq("_id", siteDocument.get("mir_id"))).first().get("name"),
                         (int) siteDocument.get("start"),
                         (int) siteDocument.get("end"),
                         (float) (double) siteDocument.get("probability"));

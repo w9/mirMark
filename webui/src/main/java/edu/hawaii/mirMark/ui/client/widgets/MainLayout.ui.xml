@@ -17,7 +17,7 @@
                 <b:InputGroup>
                     <typeahead:Typeahead ui:field="querySymbolTypeahead" addStyleNames="form-control"/>
                     <b:InputGroupButton>
-                        <b:Button ui:field="querySymbolButton">Query by Gene Symbol</b:Button>
+                        <b:Button ui:field="querySymbolButton" type="PRIMARY">Query by Gene Symbol</b:Button>
                     </b:InputGroupButton>
                 </b:InputGroup>
             </b:Column>
@@ -25,7 +25,7 @@
                 <b:InputGroup>
                     <typeahead:Typeahead ui:field="queryRefseqTypeahead" minLength="4" addStyleNames="form-control"/>
                     <b:InputGroupButton>
-                        <b:Button ui:field="queryRefseqButton">Query by RefSeq ID</b:Button>
+                        <b:Button ui:field="queryRefseqButton" type="SUCCESS">Query by RefSeq ID</b:Button>
                     </b:InputGroupButton>
                 </b:InputGroup>
             </b:Column>
@@ -33,7 +33,7 @@
                 <b:InputGroup>
                     <typeahead:Typeahead ui:field="queryMirNameTypeahead" addStyleNames="form-control"/>
                     <b:InputGroupButton>
-                        <b:Button ui:field="queryMirNameButton">Query by Mir Name</b:Button>
+                        <b:Button ui:field="queryMirNameButton" type="INFO">Query by Mir Name</b:Button>
                     </b:InputGroupButton>
                 </b:InputGroup>
             </b:Column>
@@ -91,11 +91,17 @@
                     <a download="result.csv" href="" class="btn btn-default" ui:field="fDownloadCSVLink">Download CSV</a>
                 </g:HTMLPanel>
             </b:Column>
+            <b:Column size="MD_4">
+                <g:HTMLPanel>
+                    <p style="float: right">Source Code: <a href="https://github.com/lanagarmire/MirMark">Github Link</a></p>
+                </g:HTMLPanel>
+            </b:Column>
         </b:Row>
 
         <g:HTMLPanel>
-            <p style="float: left">Reference: <a class="foot-note" href="http://www.genomebiology.com/2014/15/10/500">mirMark: a site-level and UTR-level classifier for miRNA target prediction</a></p>
-            <p style="float: right">Source Code: <a class="foot-note" href="https://github.com/lanagarmire/MirMark">Github Link</a></p>
+            <p class="foot-note" style="float: left">Reference: <a href="http://www.genomebiology.com/2014/15/10/500">
+                Menor, M., Ching, T., Zhu, X., Garmire, D., and Garmire, L. X. (2014). "mirMark: a site-level and UTR-level classifier for miRNA target prediction." Genome biology.
+            </a></p>
         </g:HTMLPanel>
     </b:Container>
 </ui:UiBinder>

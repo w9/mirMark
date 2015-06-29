@@ -379,10 +379,10 @@ public class MainLayout extends ViewImpl {
     void drawSiteLevelResults(ArrayList<SiteLevelResultEntry> entries) {
         fSiteLevelCanvas.clear();
         fSiteLevelCanvas.getElement().setInnerHTML("");
-        MyNotify.notify("entries.size() = " + entries.size());
+        //***MyNotify.notify("entries.size() = " + entries.size());
         for (SiteLevelResultEntry entry : entries) {
             siteLevelIllustration = new SiteLevelIllustration(fSiteLevelCanvas, entry.start, entry.end, entry.chr);
-            MyNotify.notify("entry.sites.size() = " + entry.sites.size());
+            //***MyNotify.notify("entry.sites.size() = " + entry.sites.size());
             for (SiteLevelResultEntry.Site site : entry.sites) {
                 siteLevelIllustration.drawSite(site.mirName, site.start, site.end, site.probability);
             }

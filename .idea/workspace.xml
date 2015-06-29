@@ -2,21 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0c5cf63b-ab08-49bd-8b29-7707ac977133" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mongodb_bson_3_0_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mongodb_mongodb_driver_3_0_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mongodb_mongodb_driver_core_3_0_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/shared/SiteLevelResultEntry.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/widgets/MainLayout.java" afterPath="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/widgets/MainLayout.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/widgets/MainLayout.ui.xml" afterPath="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/widgets/MainLayout.ui.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/public/MirMark.css" afterPath="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/public/MirMark.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/widgets/MyNotify.java" afterPath="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/widgets/MyNotify.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/actions/ProjectActions.java" afterPath="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/actions/ProjectActions.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/actions/ProjectActionsAsync.java" afterPath="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/actions/ProjectActionsAsync.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/server/actions/ProjectActionsImpl.java" afterPath="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/server/actions/ProjectActionsImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/widgets/SiteLevelIllustration.java" afterPath="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/widgets/SiteLevelIllustration.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webui/pom.xml" afterPath="$PROJECT_DIR$/webui/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webui/webui.iml" afterPath="$PROJECT_DIR$/webui/webui.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/webui_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/webui_war_exploded.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="mirMark.iws" />
@@ -46,24 +35,16 @@
         <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/widgets/MainLayout.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="72" column="17" selection-start-line="72" selection-start-column="17" selection-end-line="72" selection-end-column="17" />
+              <caret line="37" column="42" selection-start-line="37" selection-start-column="42" selection-end-line="38" selection-end-column="79" />
               <folding>
-                <element signature="e#1660#1695#0" expanded="true" />
-                <element signature="e#1823#1859#0" expanded="true" />
-                <element signature="e#1933#1969#0" expanded="true" />
-                <element signature="e#2037#2073#0" expanded="true" />
-                <element signature="e#2143#2179#0" expanded="true" />
-                <element signature="e#2242#2278#0" expanded="true" />
-                <element signature="e#2344#2380#0" expanded="true" />
-                <element signature="e#3431#3467#0" expanded="true" />
-                <element signature="e#3600#3636#0" expanded="true" />
-                <element signature="e#3769#3805#0" expanded="true" />
-                <element signature="e#18560#18597#1" expanded="true" />
-                <element signature="e#18837#18874#1" expanded="true" />
-                <element signature="e#19111#19148#1" expanded="true" />
-                <element signature="e#19390#19427#1" expanded="true" />
-                <element signature="e#19653#19690#1" expanded="true" />
-                <element signature="e#19910#19947#1" expanded="true" />
+                <element signature="e#6760#6761#0" expanded="true" />
+                <element signature="e#6844#6845#0" expanded="true" />
+                <element signature="e#7252#7253#0" expanded="true" />
+                <element signature="e#7336#7337#0" expanded="true" />
+                <element signature="e#7745#7746#0" expanded="true" />
+                <element signature="e#7829#7830#0" expanded="true" />
+                <element signature="e#20197#20198#0" expanded="true" />
+                <element signature="e#20274#20275#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -93,7 +74,7 @@
         <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/server/actions/ProjectActionsImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="159" column="97" selection-start-line="159" selection-start-column="97" selection-end-line="159" selection-end-column="97" />
+              <caret line="156" column="74" selection-start-line="156" selection-start-column="74" selection-end-line="156" selection-end-column="74" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -101,24 +82,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SiteLevelIllustration.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SiteLevelIllustration.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/widgets/SiteLevelIllustration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.55954325">
-              <caret line="64" column="19" selection-start-line="64" selection-start-column="19" selection-end-line="64" selection-end-column="19" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="57" column="25" selection-start-line="57" selection-start-column="25" selection-end-line="57" selection-end-column="25" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SiteLevelResultEntry.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/shared/SiteLevelResultEntry.java">
+      <file leaf-file-name="UtrLevelResultEntry.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/shared/UtrLevelResultEntry.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="19" column="27" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -133,11 +112,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainLayout.ui.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/widgets/MainLayout.ui.xml">
+      <file leaf-file-name="Results.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/server/Results.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="66" column="17" selection-start-line="66" selection-start-column="17" selection-end-line="66" selection-end-column="17" />
+              <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainLayout.ui.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/widgets/MainLayout.ui.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.30570507">
+              <caret line="69" column="18" selection-start-line="69" selection-start-column="18" selection-end-line="69" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -153,22 +142,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MyNotify.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/widgets/MyNotify.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="12" column="23" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -190,11 +170,12 @@
         <option value="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/actions/ProjectActionsAsync.java" />
         <option value="$PROJECT_DIR$/webui/pom.xml" />
         <option value="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/shared/SiteLevelResultEntry.java" />
-        <option value="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/server/actions/ProjectActionsImpl.java" />
-        <option value="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/widgets/MainLayout.java" />
         <option value="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/public/MirMark.css" />
-        <option value="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/widgets/MainLayout.ui.xml" />
+        <option value="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/widgets/MainLayout.java" />
+        <option value="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/server/actions/ProjectActionsImpl.java" />
+        <option value="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/widgets/MyTemplates.java" />
         <option value="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/widgets/SiteLevelIllustration.java" />
+        <option value="$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/widgets/MainLayout.ui.xml" />
       </list>
     </option>
   </component>
@@ -252,9 +233,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -1107,6 +1085,9 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1483,7 +1464,9 @@
       <workItem from="1433984293603" duration="3146000" />
       <workItem from="1434041484901" duration="15000" />
       <workItem from="1434041507987" duration="123000" />
-      <workItem from="1434252997527" duration="17057000" />
+      <workItem from="1434252997527" duration="17452000" />
+      <workItem from="1434367814169" duration="9096000" />
+      <workItem from="1435593181719" duration="22000" />
     </task>
     <task id="LOCAL-00001" summary="afasf">
       <created>1434253210201</created>
@@ -1491,11 +1474,17 @@
       <option name="project" value="LOCAL" />
       <updated>1434253210201</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="afasf">
+      <created>1434270932799</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1434270932799</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59940000" />
+    <option name="totallyTimeSpent" value="69453000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1922" height="1055" extended-state="6" />
@@ -1503,14 +1492,12 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32985386" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32985386" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32985386" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32985386" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1522,12 +1509,14 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32985386" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33507308" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1558,36 +1547,11 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/webui/pom.xml">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/gwtbootstrap3/gwtbootstrap3/0.9.1/gwtbootstrap3-0.9.1-sources.jar!/org/gwtbootstrap3/client/ui/Column.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="113" column="34" selection-start-line="113" selection-start-column="34" selection-end-line="113" selection-end-column="34" />
+          <caret line="40" column="13" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/widgets/MainLayout.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#1660#1695#0" expanded="true" />
-            <element signature="e#1823#1859#0" expanded="true" />
-            <element signature="e#1933#1969#0" expanded="true" />
-            <element signature="e#2037#2073#0" expanded="true" />
-            <element signature="e#2143#2179#0" expanded="true" />
-            <element signature="e#2242#2278#0" expanded="true" />
-            <element signature="e#2344#2380#0" expanded="true" />
-            <element signature="e#3431#3467#0" expanded="true" />
-            <element signature="e#3600#3636#0" expanded="true" />
-            <element signature="e#3769#3805#0" expanded="true" />
-            <element signature="e#18560#18597#1" expanded="true" />
-            <element signature="e#18837#18874#1" expanded="true" />
-            <element signature="e#19111#19148#1" expanded="true" />
-            <element signature="e#19390#19427#1" expanded="true" />
-            <element signature="e#19653#19690#1" expanded="true" />
-            <element signature="e#19910#19947#1" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1602,10 +1566,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding>
-            <element signature="e#1203#1204#0" expanded="true" />
-            <element signature="e#1247#1248#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1749,7 +1709,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1757,7 +1716,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="30" column="22" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1765,7 +1723,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="117" column="60" selection-start-line="117" selection-start-column="60" selection-end-line="117" selection-end-column="60" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1773,7 +1730,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1789,7 +1745,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1813,7 +1768,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1821,10 +1775,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="32" column="63" selection-start-line="32" selection-start-column="63" selection-end-line="32" selection-end-column="63" />
-          <folding>
-            <element signature="e#1414#1415#0" expanded="false" />
-            <element signature="e#1473#1474#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1840,7 +1790,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="70" column="14" selection-start-line="70" selection-start-column="14" selection-end-line="70" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1848,7 +1797,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="61" column="10" selection-start-line="61" selection-start-column="10" selection-end-line="61" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1856,7 +1804,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="37" column="13" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1872,18 +1819,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="46" column="19" selection-start-line="46" selection-start-column="19" selection-end-line="46" selection-end-column="19" />
-          <folding>
-            <element signature="e#8327#8328#0" expanded="true" />
-            <element signature="e#8370#8371#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/shared/UtrLevelResultEntry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1891,7 +1826,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1899,7 +1833,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="23" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1907,52 +1840,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="27" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/server/actions/ProjectActionsImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="159" column="97" selection-start-line="159" selection-start-column="97" selection-end-line="159" selection-end-column="97" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/public/MirMark.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="37" column="19" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/widgets/MainLayout.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="72" column="17" selection-start-line="72" selection-start-column="17" selection-end-line="72" selection-end-column="17" />
-          <folding>
-            <element signature="e#1660#1695#0" expanded="true" />
-            <element signature="e#1823#1859#0" expanded="true" />
-            <element signature="e#1933#1969#0" expanded="true" />
-            <element signature="e#2037#2073#0" expanded="true" />
-            <element signature="e#2143#2179#0" expanded="true" />
-            <element signature="e#2242#2278#0" expanded="true" />
-            <element signature="e#2344#2380#0" expanded="true" />
-            <element signature="e#3431#3467#0" expanded="true" />
-            <element signature="e#3600#3636#0" expanded="true" />
-            <element signature="e#3769#3805#0" expanded="true" />
-            <element signature="e#18560#18597#1" expanded="true" />
-            <element signature="e#18837#18874#1" expanded="true" />
-            <element signature="e#19111#19148#1" expanded="true" />
-            <element signature="e#19390#19427#1" expanded="true" />
-            <element signature="e#19653#19690#1" expanded="true" />
-            <element signature="e#19910#19947#1" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1960,14 +1847,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="40" column="13" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/widgets/MainLayout.ui.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="66" column="17" selection-start-line="66" selection-start-column="17" selection-end-line="66" selection-end-column="17" />
           <folding />
         </state>
       </provider>
@@ -1988,10 +1867,69 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/shared/UtrLevelResultEntry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/server/Results.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/server/actions/ProjectActionsImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="156" column="74" selection-start-line="156" selection-start-column="74" selection-end-line="156" selection-end-column="74" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/widgets/MainLayout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="37" column="42" selection-start-line="37" selection-start-column="42" selection-end-line="38" selection-end-column="79" />
+          <folding>
+            <element signature="e#6760#6761#0" expanded="true" />
+            <element signature="e#6844#6845#0" expanded="true" />
+            <element signature="e#7252#7253#0" expanded="true" />
+            <element signature="e#7336#7337#0" expanded="true" />
+            <element signature="e#7745#7746#0" expanded="true" />
+            <element signature="e#7829#7830#0" expanded="true" />
+            <element signature="e#20197#20198#0" expanded="true" />
+            <element signature="e#20274#20275#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/widgets/SiteLevelIllustration.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.55954325">
-          <caret line="64" column="19" selection-start-line="64" selection-start-column="19" selection-end-line="64" selection-end-column="19" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="57" column="25" selection-start-line="57" selection-start-column="25" selection-end-line="57" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/public/MirMark.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="37" column="19" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webui/src/main/java/edu/hawaii/mirMark/ui/client/widgets/MainLayout.ui.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30570507">
+          <caret line="69" column="18" selection-start-line="69" selection-start-column="18" selection-end-line="69" selection-end-column="18" />
           <folding />
         </state>
       </provider>
